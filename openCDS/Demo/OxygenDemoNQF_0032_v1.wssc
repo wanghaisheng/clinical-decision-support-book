@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-CALL>
+    <SOAP-FIELDS>
+        <service xml:space="preserve">DecisionSupportService</service>
+        <port xml:space="preserve">evaluate</port>
+        <operation xml:space="preserve">evaluateAtSpecifiedTime</operation>
+        <URL xml:space="preserve">http://localhost:8080/opencds-decision-support-service/evaluate</URL>
+        <action xml:space="preserve">http://www.omg.org/spec/CDSS/201105/dssWsdl:operation:evaluateAtSpecifiedTime</action>
+        <soapVersion xml:space="preserve">1.2</soapVersion>
+    </SOAP-FIELDS>
+    <REQUEST><![CDATA[&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope  xmlns:SOAP-ENV=&quot;http://www.w3.org/2003/05/soap-envelope&quot;  xmlns:dss=&quot;http://www.omg.org/spec/CDSS/201105/dss&quot;&gt;
+  &lt;SOAP-ENV:Header/&gt;
+  &lt;SOAP-ENV:Body&gt;
+    &lt;dss:evaluateAtSpecifiedTime&gt;
+      &lt;interactionId scopingEntityId=&quot;edu.utah&quot; interactionId=&quot;123456&quot; submissionTime=&quot;2012-01-11T00:00:00.000&quot;/&gt;
+      &lt;specifiedTime&gt;2011-01-01T00:00:00.000&lt;/specifiedTime&gt;&lt;!-- by definition this is midnight, the instant of the start of the year 2011, and the end of 2010 --&gt;&lt;!-- note that a specifiedTime value = &quot;2010-12-31&quot; may be interpreted as midnight, the beginning of the last day of the year, and you probably don't mean that --&gt;
+      &lt;evaluationRequest&gt;
+        &lt;kmEvaluationRequest&gt;
+          &lt;kmId scopingEntityId=&quot;org.opencds&quot; businessId=&quot;NQF_0032_v1&quot; version=&quot;1.1.1&quot;/&gt;
+        &lt;/kmEvaluationRequest&gt;
+        &lt;dataRequirementItemData&gt;
+          &lt;driId itemId=&quot;payload001&quot;&gt;
+            &lt;containingEntityId scopingEntityId=&quot;edu.utah&quot; businessId=&quot;NQFData&quot; version=&quot;1.0.0&quot;/&gt;
+          &lt;/driId&gt;
+          &lt;data&gt;
+            &lt;informationModelSSId scopingEntityId=&quot;org.opencds.vmr&quot; businessId=&quot;VMR&quot; version=&quot;1.0&quot;/&gt;
+          	&lt;base64EncodedPayload&gt;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxpbjpjZHNJbnB1dCB4bWxuczppbj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc2lucHV0Ig0KCQl4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiANCgkJeG1sbnM6ZHQ9Im9yZy5vcGVuY2RzLnZtci52MV8wLnNjaGVtYS5kYXRhdHlwZXMiDQoJCXhzaTpzY2hlbWFMb2NhdGlvbj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc2lucHV0IC4uXHNjaGVtYVxjZHNJbnB1dC54c2QiPg0KCTx2bXJJbnB1dD4NCgkJPHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuMTEuMS4xIi8+DQoJCTxwYXRpZW50Pg0KCQkJPGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5LjUiIGV4dGVuc2lvbj0iOTk2LTc1Ni00OTUiLz4NCgkJCTwhLS1hbHRlcm5hdGUgZm9ybSBvZiBpZDogIDxpZCByb290PSJhR1VJRCIvPiAgLS0+DQoJCQk8ZGVtb2dyYXBoaWNzPg0KCQkJCTxiaXJ0aFRpbWUgdmFsdWU9IjE5NjkwNjI4Ii8+IDwhLS0gNDIuNSB5byBhdCAxMi8zMS8yMDExIC0tPg0KCQkJCTxnZW5kZXIgY29kZT0iMTAxNzQiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjUiIGRpc3BsYXlOYW1lPSJGZW1hbGUiLz4NCgkJCTwvZGVtb2dyYXBoaWNzPg0KCQkJPGNsaW5pY2FsU3RhdGVtZW50cz4NCgkJCQk8ZW5jb3VudGVyRXZlbnRzPg0KCQkJCQk8ZW5jb3VudGVyRXZlbnQ+DQoJCQkJCQk8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NSIvPg0KCQkJCQkJPGlkIHJvb3Q9IjEuMi4zIiBleHRlbnNpb249IkVuYzAwMSIvPg0KCQkJCQkJPGRhdGFTb3VyY2VUeXBlIGNvZGU9IkNsaW5pY2FsIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NSIvPg0KCQkJCQkJPGVuY291bnRlclR5cGUgY29kZT0iOTkyMDEiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuMTIiIGRpc3BsYXlOYW1lPSJPdXRwYXRpZW50IGVuY291bnRlciIvPg0KCQkJCQkJPGVuY291bnRlckV2ZW50VGltZSBsb3c9IjIwMTEwMTAxIiBoaWdoPSIyMDExMDEwMSIvPg0KCQkJCQk8L2VuY291bnRlckV2ZW50Pg0KCQkJCTwvZW5jb3VudGVyRXZlbnRzPg0KCQkJCTxvYnNlcnZhdGlvblJlc3VsdHM+DQoJCQkJCTxvYnNlcnZhdGlvblJlc3VsdD4NCgkJCQkJCTx0ZW1wbGF0ZUlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1Ii8+DQoJCQkJCQk8aWQgcm9vdD0iMS4yLjMiIGV4dGVuc2lvbj0iT2JzMDAxIi8+DQoJCQkJCQk8ZGF0YVNvdXJjZVR5cGUgY29kZT0iQ2xpbmljYWwiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjMuNzk1Ii8+DQoJCQkJCQk8b2JzZXJ2YXRpb25Gb2N1cyBjb2RlPSI4ODE0NyIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xMiIgZGlzcGxheU5hbWU9IkNlcnZpY2FsIG9yIHZhZ2luYWwgY3l0b3BhdGhvbG9neSBzbWVhciIvPg0KCQkJCQkJPG9ic2VydmF0aW9uRXZlbnRUaW1lIGxvdz0iMjAxMDA2MDEiIGhpZ2g9IjIwMTAwNjAxIi8+DQoJCQkJCTwvb2JzZXJ2YXRpb25SZXN1bHQ+DQoJCQkJPC9vYnNlcnZhdGlvblJlc3VsdHM+CQkJDQoJCQk8L2NsaW5pY2FsU3RhdGVtZW50cz4NCgkJPC9wYXRpZW50PgkNCgk8L3ZtcklucHV0Pg0KPC9pbjpjZHNJbnB1dD4NCg==&lt;/base64EncodedPayload&gt;
+          &lt;/data&gt;
+        &lt;/dataRequirementItemData&gt;
+      &lt;/evaluationRequest&gt;
+    &lt;/dss:evaluateAtSpecifiedTime&gt;
+  &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
+]]></REQUEST>
+</SOAP-CALL>

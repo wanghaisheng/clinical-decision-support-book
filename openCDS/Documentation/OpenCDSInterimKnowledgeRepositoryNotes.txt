@@ -1,0 +1,19 @@
+Notes about interim OpenCDS file-based Knowledge Repository
+last updated 2012-01-11
+
+The OpenCDS SVN repository for svn_1.0 (currently containing a preview named RC6 - release candidate #6) contains an embedded file-based knowledge repository.  These 
+files include sample rules, settings, and other data required to run a demo copy 
+of OpenCDS.
+
+DO NOT modify these files in the default embedded location!
+
+If you do, you will lose all your work if you do a refresh from SVN, because it
+will overwrite anything in the default embedded location...
+
+If you intend to work with the KR, and don't want to lose what you are doing, do
+the following first:
+	1. Copy the entire directory named "opencds-knowledge-repository-data" to a new
+location that is outside of the root opencds-parent directory, so it won't be
+overwritten by an SVN import.  
+	2. Then modify the resource file found in the
+opencds-decision-support-service resources named "opencds-decision-support-service-config.xml" to point to this new location.

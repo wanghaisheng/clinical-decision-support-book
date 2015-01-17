@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../schemata/vmr/vmr.xsd"
+ xmlns:dt="urn:hl7-org:cdsdt:r2" xmlns="urn:hl7-org:vmr:r2" xsi:type="AdverseEvent">
+    <templateId root="2.16.840.1.113883.3.1829.11.3.1.5" identifierName="Adverse Event Detail"/>
+    <documentationTime><dt:low value="20130613080500"/><dt:high value="20130613080500"/></documentationTime>
+    <!-- . . . May include further detail about the Adverse Event Agent, if needed, by using one of the following Related Entity structures: -->
+    <!-- . . . Medication or Vaccine: -->
+    <relatedEntity xsi:type="RelatedEntity">
+        <targetRole codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/>
+        </targetRole> 
+        <entity xsi:type="AdministrableSubstance">
+            <substanceCode/>
+        </entity>
+    </relatedEntity>
+    <!-- . . . Food Product: -->
+    <relatedEntity xsi:type="RelatedEntity">
+        <targetRole codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/>
+        </targetRole>
+        <entity xsi:type="Entity">
+            <entityType codeSystem="PTS" codeSystemName="PTS" code="PTS">
+                <dt:displayName value="PTS"/> 
+            </entityType>
+        </entity>
+    </relatedEntity>
+    <!-- . . . Substance other than Medication, Vaccine, or Food Product: -->
+    <relatedEntity xsi:type="RelatedEntity">
+        <targetRole codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/> 
+        </targetRole>
+        <entity xsi:type="Entity">
+            <entityType codeSystem="PTS" codeSystemName="PTS" code="PTS">
+                <dt:displayName value="PTS"/> 
+            </entityType>
+        </entity>
+    </relatedEntity>
+    <adverseEventCode codeSystem="PTS" codeSystemName="PTS" code="PTS">
+        <dt:displayName value="PTS"/> 
+    </adverseEventCode>
+    <adverseEventAgent codeSystem="PTS" codeSystemName="PTS" code="PTS">
+        <dt:displayName value="PTS"/> 
+    </adverseEventAgent>
+    <adverseEventTime><dt:low value="20130613080500"/><dt:high value="20130613080500"/></adverseEventTime>
+    <affectedBodySite>
+        <bodySiteCode codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/> 
+        </bodySiteCode>
+        <laterality codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/> 
+        </laterality>
+    </affectedBodySite>
+    
+    <adverseEventStatus codeSystem="PTS" codeSystemName="PTS" code="PTS">
+        <dt:displayName value="PTS"/> 
+    </adverseEventStatus>
+    <severity codeSystem="PTS" codeSystemName="PTS" code="PTS">
+        <dt:displayName value="PTS"/> 
+    </severity>
+</ClinicalStatement>							
+
+<!-- PTS = per template specification -->

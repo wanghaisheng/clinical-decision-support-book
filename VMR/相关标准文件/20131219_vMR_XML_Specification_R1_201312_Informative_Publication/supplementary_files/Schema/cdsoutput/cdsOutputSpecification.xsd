@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2014 sp1 (x64) (http://www.altova.com) by Kensaku Kawamoto (University of Utah) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:hl7-org:cdsoutputspecification:r2" xmlns:cdsos="urn:hl7-org:cdsoutputspecification:r2" xmlns:dt="urn:hl7-org:cdsdt:r2" xmlns:vmr="urn:hl7-org:vmr:r2" targetNamespace="urn:hl7-org:cdsoutputspecification:r2" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>Specifies the specific CDS output data produced for a specific CDS use case.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="urn:hl7-org:vmr:r2" schemaLocation="../vmr/vmr.xsd"/>
+	<xs:import namespace="urn:hl7-org:cdsdt:r2" schemaLocation="../common/datatypes.xsd"/>
+	<xs:complexType name="AttributeOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>Specifies the attributes contained in the source clinical statement regarding the evaluated person of interest.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attributeTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained attribute that SHALL be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialAttributeTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained attribute that MAY be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CDSOutputAsDataTypeSpecification" type="CDSOutputAsDataTypeSpecification"/>
+	<xs:complexType name="CDSOutputAsDataTypeSpecification">
+		<xs:annotation>
+			<xs:documentation>The parent class specifying the data type output to be provided by a specific CDS use case.  </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CDSOutputSpecification">
+				<xs:sequence>
+					<xs:element name="valueTemplate" type="vmr:CodedIdentifier" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Identifier of a set of constraints that SHALL be placed on the output value.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CDSOutputAsStringNameValuePairSpecification"
+		type="CDSOutputAsStringNameValuePairSpecification"/>
+	<xs:complexType name="CDSOutputAsStringNameValuePairSpecification">
+		<xs:annotation>
+			<xs:documentation>The parent class specifying the string name value pair output to be provided by a specific CDS use case.  </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CDSOutputSpecification">
+				<xs:sequence>
+					<xs:element name="nameValuePairTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Identifier of a set of constraints that SHALL be placed on the string name value pair.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="potentialNameValuePairTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Identifier of a set of constraints that MAY be placed on the string name value pair.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CDSOutputAsVMRSpecification" type="CDSOutputAsVMRSpecification"/>
+	<xs:complexType name="CDSOutputAsVMRSpecification">
+		<xs:annotation>
+			<xs:documentation>The parent class specifying the vMR output to be provided by a specific CDS use case.  For example, this class can be used to specify that the evaluation of a patient for the need for a mammogram will return a templated observation specifying whether the intervention is needed, and a templated observation specifying when the intervention was last done.
+
+Can include a detailed output specification for the focal patient as well as for related evaluated persons.  Note that it is assumed that the superset of results returned for related evaluated persons are the same for each of the related evaluated persons (e.g., relatives).  If output specifications are not provided regarding patients or other evaluated persons, then this signifies that no further constraints are being placed on returned results other than what is expressed through the output data model and its existing template(s).</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CDSOutputSpecification">
+				<xs:sequence>
+					<xs:element name="outputScopeIncludesRelatedEvaluatedPersons" type="dt:BL" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Specifies whether the scope of the output potentially includes related evaluated persons (e.g., family members).  If not specified, the default expected behavior is that related evaluated persons will not be included within the scope.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="outputVmrTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Identifier of a set of constraints that SHALL be placed on the output vMR.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="potentialOutputVmrTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Identifier of a set of constraints that MAY be placed on the output vMR.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="relatedEvaluatedPersonOutputSpecification" type="RelatedEvaluatedPersonOutputSpecification" minOccurs="0"/>
+					<xs:element name="patientOutputSpecification" type="PatientOutputSpecification" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CDSOutputSpecification" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Abstract base class specifying the output to be provided by a specific CDS use case. 
+
+ As a specific example, a CDSOutputSpecification may be used to specify details on the CDS output that will be returned by a CDS guidance service compliant with the HL7 Decision Support Service standard.  Specifically, this type of specification can be encapsulated within the “CDS output specification” section of a Decision Support Service’s specification of knowledge module evaluation result semantics.  Further information regarding this type of use case can be found in the HL7 Decision Support Service specification and the HL7 Decision Support Service Implementation Guide.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cdsOutputTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Template to identify the output structure and specifications.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ClinicalStatementOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>Specifies the output clinical statements regarding the evaluated person of interest.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="clinicalStatementTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained clinical statement that SHALL be provided as a part of the evaluation result.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialClinicalStatementTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained clinical statement that MAY be provided as a part of the evaluation result.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relatedClinicalStatementOutputSpecification" type="RelatedClinicalStatementOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="relatedEntityOutputSpecification" type="RelatedEntityOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="attributeOutputSpecification" type="AttributeOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EntityOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>Specifies the entities to be provided as a part of the output.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained entity that SHALL be provided as a part of the entity relationship.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialEntityTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained entity that MAY be provided as a part of the entity relationship.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EvaluatedPersonOutputSpecification" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Specifies the evaluation results to be provided for an evaluated person. Specifies the templates that SHALL or MAY be applied.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="evaluatedPersonTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of a set of constraints that SHALL be placed on the EvaluatedPerson.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialEvaluatedPersonTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of a set of constraints that MAY be placed on the EvaluatedPerson.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="clinicalStatementOutputSpecification" type="ClinicalStatementOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PatientOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>The evaluation results to be returned for the patient.  Is a specialization of the EvaluatedPersonOutputSpecification class.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="EvaluatedPersonOutputSpecification"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RelatedClinicalStatementOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>Specifies the clinical statements related to the source clinical statement regarding the evaluated person of interest.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="relationshipTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained clinical statement relationship that SHALL be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialRelationshipTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained clinical statement relationship that MAY be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="clinicalStatementOutputSpecification" type="ClinicalStatementOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelatedEntityOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>Specifies the entities related to the source clinical statement regarding the evaluated person of interest.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="relationshipTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained entity relationship that SHALL be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="potentialRelationshipTemplate" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Identifier of constrained entity relationship that MAY be provided as a part of the parent clinical statement.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="entityOutputSpecification" type="EntityOutputSpecification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelatedEvaluatedPersonOutputSpecification">
+		<xs:annotation>
+			<xs:documentation>The results that will be provided for evaluated persons related to the patient.  Is a specialization of the EvaluatedPersonOutputSpecification class.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="EvaluatedPersonOutputSpecification"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

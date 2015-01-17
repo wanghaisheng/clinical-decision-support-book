@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-CALL>
+    <SOAP-FIELDS>
+        <service xml:space="preserve">DecisionSupportService</service>
+        <port xml:space="preserve">evaluate</port>
+        <operation xml:space="preserve">evaluateAtSpecifiedTime</operation>
+        <URL xml:space="preserve">http://localhost:8080/opencds-decision-support-service/evaluate</URL>
+        <action xml:space="preserve">http://www.omg.org/spec/CDSS/201105/dssWsdl:operation:evaluateAtSpecifiedTime</action>
+        <soapVersion xml:space="preserve">1.2</soapVersion>
+    </SOAP-FIELDS>
+    <REQUEST><![CDATA[&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://www.w3.org/2003/05/soap-envelope&quot;
+	xmlns:dss=&quot;http://www.omg.org/spec/CDSS/201105/dss&quot;&gt;
+  &lt;SOAP-ENV:Header/&gt;
+  &lt;SOAP-ENV:Body&gt;
+    &lt;dss:evaluateAtSpecifiedTime&gt;
+      &lt;interactionId scopingEntityId=&quot;edu.utah.bmi&quot; interactionId=&quot;123456&quot; submissionTime=&quot;2012-01-20T07:59:35.123&quot;/&gt;
+      &lt;specifiedTime&gt;2012-01-01T00:00:00.000&lt;/specifiedTime&gt;
+      &lt;evaluationRequest clientLanguage=&quot;&quot; clientTimeZoneOffset=&quot;&quot;&gt;
+        &lt;kmEvaluationRequest&gt;
+          &lt;kmId scopingEntityId=&quot;org.opencds&quot; businessId=&quot;NQF_0031_v1&quot; version=&quot;1.1.1&quot;/&gt;
+        &lt;/kmEvaluationRequest&gt;
+        &lt;dataRequirementItemData&gt;
+          &lt;driId itemId=&quot;testPayload&quot;&gt;
+            &lt;containingEntityId scopingEntityId=&quot;edu.utah.bmi&quot; businessId=&quot;NQFData&quot; version=&quot;1.0.0&quot;/&gt;
+          &lt;/driId&gt;
+          &lt;data&gt;
+            &lt;informationModelSSId scopingEntityId=&quot;org.opencds.vmr&quot; businessId=&quot;VMR&quot; version=&quot;1.0&quot;/&gt;
+&lt;base64EncodedPayload&gt;PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxpbjpjZHNJbnB1dCB4bWxuczppbj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc2lucHV0Ig0KCQl4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiANCgkJeG1sbnM6ZHQ9Im9yZy5vcGVuY2RzLnZtci52MV8wLnNjaGVtYS5kYXRhdHlwZXMiDQoJCXhzaTpzY2hlbWFMb2NhdGlvbj0ib3JnLm9wZW5jZHMudm1yLnYxXzAuc2NoZW1hLmNkc2lucHV0IC4uXHNjaGVtYVxjZHNJbnB1dC54c2QiPg0KCTx2bXJJbnB1dD4NCgkJPHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUuMTEuMS4xIi8+DQoJCTxwYXRpZW50Pg0KCQkJPGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5LjUiIGV4dGVuc2lvbj0iOTk2LTc1Ni00OTUiLz4NCgkJCTxkZW1vZ3JhcGhpY3M+DQoJCQkJPGJpcnRoVGltZSB2YWx1ZT0iMTk2OTA2MjgiLz4NCgkJCQk8Z2VuZGVyIGNvZGU9IjEwMTc0IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My41IiBkaXNwbGF5TmFtZT0iRmVtYWxlIi8+DQoJCQk8L2RlbW9ncmFwaGljcz4NCgkJCTxjbGluaWNhbFN0YXRlbWVudHM+DQoJCQkJPGVuY291bnRlckV2ZW50cz4NCgkJCQkJPGVuY291bnRlckV2ZW50Pg0KCQkJCQkJPHRlbXBsYXRlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUiLz4NCgkJCQkJCTxpZCByb290PSIxLjIuMyIgZXh0ZW5zaW9uPSJFbmMwMDEiLz4NCgkJCQkJCTxkYXRhU291cmNlVHlwZSBjb2RlPSJDbGluaWNhbCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUiLz4NCgkJCQkJCTxlbmNvdW50ZXJUeXBlIGNvZGU9Ijk5MjAxIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEyIiBkaXNwbGF5TmFtZT0iT3V0cGF0aWVudCBlbmNvdW50ZXIiLz4NCgkJCQkJCTxlbmNvdW50ZXJFdmVudFRpbWUgbG93PSIyMDExMDEwMSIgaGlnaD0iMjAxMTAxMDEiLz4NCgkJCQkJPC9lbmNvdW50ZXJFdmVudD4NCgkJCQk8L2VuY291bnRlckV2ZW50cz4NCgkJCQk8cHJvY2VkdXJlRXZlbnRzPg0KCQkJCQk8cHJvY2VkdXJlRXZlbnQ+DQoJCQkJCQk8dGVtcGxhdGVJZCByb290PSIyLjE2Ljg0MC4xLjExMzg4My4zLjc5NSIvPg0KCQkJCQkJPGlkIHJvb3Q9IjEuMi4zIiBleHRlbnNpb249IlByb2MwMDEiLz4NCgkJCQkJCTxkYXRhU291cmNlVHlwZSBjb2RlPSJDbGluaWNhbCIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuMy43OTUiLz4NCgkJCQkJCTxwcm9jZWR1cmVDb2RlIGNvZGU9Ijc3MDU2IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEyIiBkaXNwbGF5TmFtZT0iTWFtbW9ncmFwaHk7IGJpbGF0ZXJhbCIvPgkJCQkJDQoJCQkJCQk8cHJvY2VkdXJlVGltZSBsb3c9IjIwMTAwNjAxIiBoaWdoPSIyMDEwMDYwMSIvPg0KCQkJCQk8L3Byb2NlZHVyZUV2ZW50Pg0KCQkJCTwvcHJvY2VkdXJlRXZlbnRzPgkJCQ0KCQkJPC9jbGluaWNhbFN0YXRlbWVudHM+DQoJCTwvcGF0aWVudD4JDQoJPC92bXJJbnB1dD4NCjwvaW46Y2RzSW5wdXQ+DQo=&lt;/base64EncodedPayload&gt;
+          &lt;/data&gt;
+        &lt;/dataRequirementItemData&gt;
+      &lt;/evaluationRequest&gt;
+    &lt;/dss:evaluateAtSpecifiedTime&gt;
+  &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;]]></REQUEST>
+</SOAP-CALL>

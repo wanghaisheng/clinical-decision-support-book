@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TID: Administer 3 times per day - no end time specified. -->
+<Cycle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2">
+    <cycleTiming xsi:type='CodedRecurringEvent'>
+        <repeatCode code="123" codeSystem="1.11.111.1111" codeSystemName="SNOMED-CT"/>
+    </cycleTiming> 
+</Cycle>

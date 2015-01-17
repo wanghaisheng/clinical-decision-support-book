@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../schemata/vmr/vmr.xsd" xmlns:dt="urn:hl7-org:cdsdt:r2"
+ xmlns="urn:hl7-org:vmr:r2" xsi:type="DietProposal">
+    <templateId root="2.16.840.1.113883.3.1829.11.8.3.5" identifierName="DietProposal"/>
+    <supplyCode>
+        <dt:displayName value="PTS"/>
+    </supplyCode>
+    <targetBodySite>
+        <bodySiteCode>
+            <dt:displayName value="PTS"/>
+        </bodySiteCode>
+    </targetBodySite>
+    <proposedSupplyTime>
+        <dt:low value="20120101"/>
+    </proposedSupplyTime>
+    <reason>
+        <dt:displayName value="PTS"/>
+    </reason>
+    <dietType>
+        <dt:displayName value="PTS"/>
+    </dietType>
+    <nutrient>
+        <nutrient>
+            <dt:displayName value="PTS"/>
+        </nutrient>
+        <quantity>
+            <dt:low value="1" unit="unit"/>
+            <dt:high value="1" unit="unit"/>
+        </quantity>
+    </nutrient>
+    <texture>
+        <foodType>
+            <dt:displayName value="PTS"/>
+        </foodType>
+        <textureType>
+            <dt:displayName value="PTS"/>
+        </textureType>
+        <textureModifier>
+            <dt:displayName value="PTS"/>
+        </textureModifier>
+    </texture>
+    <isInEffect value="true"/>
+</ClinicalStatement>
+
+<!-- PTS = per template specification -->

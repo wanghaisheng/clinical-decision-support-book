@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vMR xmlns="urn:hl7-org:vmr:r2" xmlns:dt="urn:hl7-org:cdsdt:r2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:vmr:r2 vmrSchema/vmr/vmr.xsd">
+	<!-- Created by Aziz Boxwala, followed by editing and some additions by Ken Kawamoto and David Shields. -->
+	<!-- See the source CCDA document for comments on the transformation process to arrive at this vMR.  For the most part, CCDA entries translated easily into vMR clinical statements, and the transformation could be automated. -->
+	<!-- When there were multiple, highly similar clinical statements of a particular type, a representative clinical statement was selected for mapping.  Please see the comments in the source CCDA document for details. -->
+	<patient>
+	
+		<!-- Patient demographic information -->
+
+		<id extension="1" root="2.16.840.1.113883.4.6"/>
+		<address use="HP"><dt:part type="SAL" value="1357 Amber Drive"/><dt:part type="CTY" value="Beaverton"/><dt:part type="STA" value="OR"/><dt:part type="ZIP" value="97006"/><dt:part type="CNT" value="US"/></address>
+		<name use="OR"><dt:part type="FAM" value="Jones"/><dt:part type="GIV" value="Myra"/></name>
+		<telecom value="tel:(816)276-6909" use="HP"/>
+		<birthTime value="19470501"/>
+		<ethnicity code="2186-5" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race and Ethnicity - CDC"><dt:displayName value="Not Hispanic or Latino"/></ethnicity>
+		<gender code="F" codeSystem="2.16.840.1.113883.5.1"><dt:displayName value="Female"/></gender>
+		<preferredLanguage code="eng" codeSystem="1.0.639.2" codeSystemName="ISO 639-2"/>
+		<race code="2106-3" codeSystem="2.16.840.1.113883.6.238" codeSystemName="Race and Ethnicity - CDC"><dt:displayName value="White"/></race>
+
+		<!-- Allergies  -->
+
+		<clinicalStatement xsi:type="AllergyOrIntolerance">
+			<id root="36e3e930-7b14-11db-9fe1-0800200c9a66"/>
+			<conditionCode code="247472004" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Hives"/></conditionCode>
+			<conditionEffectiveTime><dt:low value="20070501"/><dt:high value="20120806"/></conditionEffectiveTime>			
+			<conditionStatus code="73425007" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Inactive"/></conditionStatus>
+			<severity code="371924009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Moderate to severe"/></severity>
+			<agent code="7982" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"><dt:displayName value="Penicillin G benzathine"/></agent>
+		</clinicalStatement>
+		
+		<!-- Encounters and associated clinical statements -->
+
+		<clinicalStatement xsi:type="EncounterEvent">
+			<id root="2a620155-9d11-439e-92b3-5d9815ff4de8"/>
+			<!-- Reason for encounter -->
+			<relatedClinicalStatement>
+				<targetRole code="RSON" codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType"><dt:displayName value="reason"/></targetRole>
+				<clinicalStatement xsi:type="Problem">
+					<id root="db734647-fc99-424c-a864-7e3cda82e703" extension="45665"/>
+					<conditionCode code="233604007" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Pneumonia"/></conditionCode>
+					<conditionEffectiveTime><dt:low value="20120806"/></conditionEffectiveTime>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<!-- Diagnosis made during encounter-->
+			<relatedClinicalStatement>
+				<targetRole code="SUBJ" codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType"><dt:displayName value="subject"/></targetRole>
+				<clinicalStatement xsi:type="Problem">
+					<id root="5a784260-6856-4f38-9638-80c751aff2fb"/>
+					<conditionCode code="233604007" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Pneumonia"/></conditionCode>
+					<conditionEffectiveTime><dt:low value="20120806"/></conditionEffectiveTime>
+					<conditionStatus code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Active"/></conditionStatus>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<!-- Discharge medication -->
+			<relatedClinicalStatement>
+				<templateId root="TBD" identifierName="DischargeMediation"/>
+				<targetRole code="PART" codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType"><dt:displayName value="participation"/></targetRole>
+				<clinicalStatement xsi:type="SubstanceAdministrationOrder">
+					<id root="5a784260-6856-4f38-9638-80c751aff2fb"/>
+					<relatedClinicalStatement>
+						<targetRole code="RSON" codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType"><dt:displayName value="reason"/></targetRole>
+						<clinicalStatement xsi:type="Problem">
+							<!-- Changed the id from the CCDA, because the same id appears to have been used for two different problems. -->
+							<id root="313e0fc5-d750-40fa-855b-c860f7a6b911" extension="45666"/>
+							<conditionCode code="32398004" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Bronchitis"/></conditionCode>
+							<conditionEffectiveTime><dt:low value="20110113"/></conditionEffectiveTime>
+						</clinicalStatement>
+					</relatedClinicalStatement>
+					<substance>
+						<substanceCode code="896001" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"><dt:displayName value="120 ACTUAT Fluticasone propionate 0.11 MG/ACTUAT Metered Dose Inhaler"/></substanceCode>
+						<form code="324049" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"><dt:displayName value="Aerosol"/></form>
+					</substance>
+					<substanceAdministrationGeneralPurpose code="18629005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"/>
+					<dose>
+						<doseQuantity><dt:low value="1" unit="mg/actuat"/><dt:high value="1" unit="mg/actuat"/></doseQuantity>
+						<deliveryRoute code="C38216" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"><dt:displayName value="RESPIRATORY (INHALATION)"/></deliveryRoute>
+						<deliveryRate><dt:low value="110" unit="ml/min"/><dt:high value="110" unit="ml/min"/></deliveryRate>
+						<frequency xsi:type="Schedule">
+							<cycle>
+								<cycleLength value="24" unit="h"/>
+								<cycleTiming xsi:type="RecurringEvent">
+									<frequencyPerCycle value="1"/>
+									<intervalIsImportant value="false"/>
+								</cycleTiming>
+							</cycle>
+						</frequency>
+					</dose>
+					<administrationTimeInterval><dt:low value="20120813"/><dt:high value="20120813"/></administrationTimeInterval>
+					<orderEventTime><dt:low value="20120813"/><dt:high value="20120813"/></orderEventTime>
+				</clinicalStatement>	
+			</relatedClinicalStatement>
+			<encounterType code="99222" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4"><dt:displayName value="InPatient Admission"/></encounterType>
+			<encounterEventTime><dt:low value="20120806"/><dt:high value="20120806"/></encounterEventTime>			
+		</clinicalStatement>
+
+		<!-- Immunizations -->
+		
+		<clinicalStatement xsi:type="SubstanceAdministrationEvent">
+			<id root="e6f1ba43-c0ed-4b9b-9f12-f435d8ad8f92"/>
+			<substance><substanceCode code="88" codeSystem="2.16.840.1.113883.6.59" codeSystemName="CVX"><dt:displayName value="Influenza virus vaccine"/></substanceCode></substance>	
+			<substanceAdministrationGeneralPurpose code="384810002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Immunization/vaccination management"/></substanceAdministrationGeneralPurpose>
+			<dose>
+				<doseQuantity><dt:low value="50" unit="mcg"/><dt:high value="50" unit="mcg"/></doseQuantity>
+				<deliveryRoute code="C28161" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="National Cancer Institute (NCI) Thesaurus"><dt:displayName value="Intramuscular injection"/></deliveryRoute>
+			</dose>
+			<administrationTimeInterval><dt:low value="20120510"/><dt:high value="20120510"/></administrationTimeInterval>
+		</clinicalStatement>
+		
+		<!-- Prescriptions -->
+		
+		<clinicalStatement xsi:type="SubstanceAdministrationOrder">
+			<id root="cdbd33f0-6cde-11db-9fe1-0800200c9a66"/>
+			<!-- reason for medication -->
+			<relatedClinicalStatement>
+				<targetRole code="RSON" codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType"><dt:displayName value="reason"/></targetRole>
+				<clinicalStatement xsi:type="Problem">
+					<id root="db734647-fc99-424c-a864-7e3cda82e703" extension="45665"/>
+					<conditionCode code="233604007" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Pneumonia"/></conditionCode>
+					<conditionEffectiveTime><dt:low value="20120806"/></conditionEffectiveTime>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<substance><substanceCode code="573621" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"><dt:displayName value="Albuterol 0.09 MG/ACTUAT inhalant solution"/></substanceCode></substance>	
+			<substanceAdministrationGeneralPurpose code="18629005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Management of drug regimen"/></substanceAdministrationGeneralPurpose>			
+			<dose>
+				<doseQuantity><dt:low value="0.09" unit="mg/actuat"/><dt:high value="0.09" unit="mg/actuat"/></doseQuantity>				
+				<deliveryRoute code="C38216" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"><dt:displayName value="RESPIRATORY (INHALATION)"/></deliveryRoute>
+				<deliveryRate><dt:low value="90" unit="ml/min"/><dt:high value="90" unit="ml/min"/></deliveryRate>		
+				<frequency xsi:type="Schedule">
+					<cycle>
+						<cycleLength value="12" unit="h"/>
+						<cycleTiming xsi:type="RecurringEvent">
+							<frequencyPerCycle value="1"/>
+							<intervalIsImportant value="false"/>
+						</cycleTiming>
+					</cycle>
+				</frequency>
+			</dose>
+			<administrationTimeInterval><dt:low value="20120806"/><dt:high value="20120813"/></administrationTimeInterval>									
+		</clinicalStatement>
+
+		<!-- Care plan - appointment -->
+		
+		<clinicalStatement xsi:type="AppointmentProposal">
+			<id root="9a6d1bac-17d3-4195-89a4-1121bc809b4d"/>
+			<comment>
+				<type code="409073007" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="instruction"/></type> 		
+				<content value="Follow up with Dr George Potomac for Asthma"/>		
+			</comment>	
+			<encounterType code="99241" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT"><dt:displayName value="Office consultation - 15 minutes"/></encounterType>					
+			<proposedAppointmentTime><dt:low value="20120820"/><dt:high value="20120820"/></proposedAppointmentTime>			
+		</clinicalStatement>
+		
+		<!-- Care plan - X-ray -->
+
+		<clinicalStatement xsi:type="ImagingProposal">
+			<id root="9a6d1bac-17d3-4195-89c4-1121bc809b5a"/>							
+			<procedureCode code="168731009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"><dt:displayName value="Chest X-Ray"/></procedureCode>
+			<proposedProcedureTime><dt:low value="20120826"/><dt:high value="20120826"/></proposedProcedureTime>			
+			
+		</clinicalStatement>
+		
+		<!-- Care plan - sputum culture -->
+		
+		<clinicalStatement xsi:type="ProcedureProposal">
+			<id root="9a6d1bac-17d3-4195-89a4-1121bc809b4a"/>					
+			<procedureCode code="624-7" codeSystem="2.16.840.1.113883.6.1"><dt:displayName value="Sputum Culture"/></procedureCode>
+			<proposedProcedureTime><dt:low value="20120820"/><dt:high value="20120820"/></proposedProcedureTime>
+		</clinicalStatement>
+
+		<!-- Problems -->
+		
+		<clinicalStatement xsi:type="Problem">
+			<id root="ab1791b0-5c71-11db-b0de-0800200c9a66"/>
+			<conditionCode code="195967001" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Asthma"/></conditionCode>
+			<conditionEffectiveTime><dt:low value="20070103"/></conditionEffectiveTime>
+			<ageAtOnset unit="a" value="59"/>
+			<conditionStatus code="55561003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Active"/></conditionStatus>
+		</clinicalStatement>
+
+		<!-- Procedures -->
+		
+		<clinicalStatement xsi:type="ProcedureEvent">
+			<id extension="123456789" root="2.16.840.1.113883.19"/>			
+			<procedureCode code="168731009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT"><dt:displayName value="Chest X-Ray"/></procedureCode>
+			<targetBodySite><bodySiteCode code="82094008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="Lower Respiratory Tract Structure"/></bodySiteCode></targetBodySite>
+			<procedureTime><dt:low value="20120807"/><dt:high value="20120807"/></procedureTime>			
+		</clinicalStatement>
+		
+		<!-- Functional and cognitive status -->
+		
+		<clinicalStatement xsi:type="Problem">
+			<id root="ab1791b0-5c71-11db-b0de-0800200c9a66"/>
+			<conditionCode code="105504002" codeSystem="2.16.840.1.113883.6.96"><dt:displayName value="Dependence on Cane"/></conditionCode>
+			<conditionEffectiveTime><dt:low value="20081101"/></conditionEffectiveTime>
+		</clinicalStatement>
+		
+		<!-- Results -->
+		
+		<clinicalStatement xsi:type="CompositeObservationResult">
+			<id root="7d5a02b0-67a4-11db-bd13-0800200c9a66"/>
+			<observationFocus code="43789009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"><dt:displayName value="CBC WO DIFFERENTIAL"/></observationFocus>
+			<observationResult xsi:type="ObservationResult">
+				<id root="107c2dc0-67a5-11db-bd13-0800200c9a66"/>
+				<observationFocus code="30313-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"><dt:displayName value="HGB"/></observationFocus>
+				<interpretation code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="HL7 ObservationInterpretation"/>
+				<observationEventTime><dt:low value="20120810"/><dt:high value="20120810"/></observationEventTime>
+				<observationValue><value xsi:type="dt:PQ" value="10.2" unit="g/dl"/></observationValue>
+			</observationResult>
+			<observationResult xsi:type="ObservationResult">
+				<id root="107c2dc0-67a5-11db-bd13-0800200c9a66"/>
+				<observationFocus code="33765-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"><dt:displayName value="WBC"/></observationFocus>
+				<interpretation code="N" codeSystem="2.16.840.1.113883.5.83" codeSystemName="HL7 ObservationInterpretation"/>
+				<observationEventTime><dt:low value="20120810"/><dt:high value="20120810"/></observationEventTime>
+				<observationValue><value xsi:type="dt:PQ" value="12.3" unit="10+3/ul"/></observationValue>
+			</observationResult>
+		</clinicalStatement>		
+	</patient>
+</vMR>

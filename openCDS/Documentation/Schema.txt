@@ -1,0 +1,10 @@
+All 5 schema files for OpenCDS vMR:
+	cdsInput.xsd
+	cdsOutput.xsd
+	cdsInputSpecification.xsd
+	datatypes.xsd
+	vmr.xsd
+can be found in the OpenCDS source code repository.  
+
+They are in the following path:  
+  opencds-parent | opencds-vmr-1_0-schema | src | main | resources | schema

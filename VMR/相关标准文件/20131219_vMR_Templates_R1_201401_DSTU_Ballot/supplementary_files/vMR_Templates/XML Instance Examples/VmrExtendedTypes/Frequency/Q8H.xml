@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Q8H: Give every 8 hours for 5 days -->
+<Cycle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2">
+    <cycleLength value='24' unit='h'/>
+    <totalCycleCount value="5"/>
+    <cycleTiming xsi:type='RecurringEvent'>
+        <frequencyPerCycle value='3'/>
+        <intervalIsImportant value='true'/>
+    </cycleTiming>
+</Cycle>

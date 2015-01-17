@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:r2 ../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2"
+    xmlns:dt="urn:hl7-org:cdsdt:r2" xsi:type="SubstanceAdministrationEvent">
+    <templateId root="2.16.840.1.113883.3.1829.11.9.1.11" identifierName="SimpleImmunizationHistoryListEntryCodeAndDateOnly"/>
+    <substance>
+        <substanceCode codeSystem="OID for CVX" codeSystemName="CVX" code="137">
+            <dt:displayName value="PST"/>
+        </substanceCode> 
+    
+    </substance>
+    <substanceAdministrationGeneralPurpose codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" code="384810002">
+        <dt:displayName value="Immunization/vaccination management (procedure)"/>
+    </substanceAdministrationGeneralPurpose>
+    <administrationTimeInterval>
+        <dt:low value="2012"/>
+        <dt:high value="2013"/>
+    </administrationTimeInterval>
+</ClinicalStatement>
+
+<!-- PTS = per template specification -->

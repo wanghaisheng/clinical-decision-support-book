@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2014 sp1 (x64) (http://www.altova.com) by Kensaku Kawamoto (University of Utah) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:hl7-org:cdsinput:r2" xmlns:cdsin="urn:hl7-org:cdsinput:r2" xmlns:vmr="urn:hl7-org:vmr:r2" xmlns:dt="urn:hl7-org:cdsdt:r2" targetNamespace="urn:hl7-org:cdsinput:r2" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>Specifies input data used by CDS systems.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="urn:hl7-org:cdsdt:r2" schemaLocation="../common/datatypes.xsd"/>
+	<xs:import namespace="urn:hl7-org:vmr:r2" schemaLocation="../vmr/vmr.xsd"/>
+	<xs:complexType name="CDSContext">
+		<xs:annotation>
+			<xs:documentation>The situation or context within which a CDS evaluation is made.  Included in CDS inputs for HL7 Context-Aware Knowledge Retrieval (Infobutton) Knowledge Request standard.  Used, for example, to generate human-readable care guidance in the end-user's preferred language.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="templateId" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The identifier of a set of constraints placed on the CDS context.  If there are multiple templates specified for the element, then the element must satisfy ALL constraints defined in ANY template at that level.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsInitiatingOrganization" type="vmr:Organization" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Organization that initiated the CDS request.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsInitiatingPerson" type="vmr:Person" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Person in the initiating organization who initiated the CDS request.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsSystemUserType" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type of individual using the CDS system.  E.g., patient, healthcare provider, or specific type of healthcare provider (physician, nurse, etc.).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsSystemUserPreferredLanguage" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Preferred language of the person who is using the system.  Used, for example, to indicate the language in which the user interface should be rendered.  E.g., English, Spanish.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsSystemUserTaskContext" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The task that a CDS system user is performing.  E.g., laboratory results review, medication list review.  Can be used to tailor CDS outputs, such as recommended information resources.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsReceivingOrganization" type="vmr:Organization" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Organization that the response will be directed towards.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsReceivingPerson" type="vmr:Person" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Person in the receiving organization that the response will be directed towards.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsInformationRecipientType" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type of individual who consumes the CDS content.  May be different from CDS system user type (e.g., if clinician is getting disease management guidance for provision to a patient).  E.g., patient, healthcare provider, or specific type of healthcare provider (physician, nurse, etc.).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsInformationRecipientPreferredLanguage" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Preferred language of the person who will consume the CDS content.  Used, for example, to indicate the language in which the content should be written.  E.g., English, Spanish.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsEncounterType" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The type of patient encounter (e.g., inpatient, outpatient) in which the knowledge request takes place. Encounter type (Value set: ActEncounterCode  [2.16.840.1.113883.1.11.13955])</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsSubTopic" type="dt:CD" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Narrows down the knowledge request by specifying a subdomain of interest (e.g., indications, contraindications, dose).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extension" type="vmr:CodedNameValuePair" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Section for user-defined CDSContext attributes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CDSInput" type="CDSInput"/>
+	<xs:complexType name="CDSInput">
+		<xs:annotation>
+			<xs:documentation>The parent class containing the data used by a CDS system to generate inferences. Includes an input vMR and optionally CDS context and/or CDS resource data.
+
+ As a specific example, a CDSInput may be used as the primary input data payload for a CDS guidance service compliant with the HL7 Decision Support Service standard.  Further information regarding this type of use case can be found in the HL7 Decision Support Service specification and the HL7 Decision Support Service Implementation Guide.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="templateId" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The identifier of a set of constraints placed on a CDS input.  If there are multiple templates specified for the element, then the element must satisfy ALL constraints defined in ANY template at that level.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsResource" type="CDSResource" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="vmrInput" type="vmr:VMR"/>
+			<xs:element name="cdsContext" type="CDSContext" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CDSResource">
+		<xs:annotation>
+			<xs:documentation>A resource independent of individual patients, provided to a CDS engine to facilitate patient evaluation.  Includes, for example, local antibiogram data (local susceptibility profile of microbes to different antimicrobial agents), local formulary restrictions, or CDS system user preference on which guidelines to use for health maintenance (e.g., HEDIS vs. USPSTF).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="templateId" type="vmr:CodedIdentifier" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The identifier of a set of constraints placed on a CDS resource.  If there are multiple templates specified for the element, then the element must satisfy ALL constraints defined in ANY template at that level.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cdsResourceType" type="dt:CD">
+				<xs:annotation>
+					<xs:documentation>The type of CDS resource, as defined by a coded taxonomy.  A resource independent of individual patients, provided to a CDS engine to facilitate patient evaluation.  E.g., local antibiogram, local formulary restrictions, CDS system user preference on which guidelines to use for health maintenance (e.g., HEDIS vs. USPSTF).  The specified data structure used to convey the related resourceContents must be identifiable from the cdsResourceType.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="resourceContents" type="xs:anyType">
+				<xs:annotation>
+					<xs:documentation>The data structure of the resource depends on the CDS resource type.  E.g., local antibiogram data, local formulary restrictions, CDS system user preference on which guidelines to use for health maintenance (e.g., HEDIS vs. USPSTF).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

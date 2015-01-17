@@ -1,0 +1,58 @@
+last updated 2013-01-11
+=======================================
+To use OpenCDS Decision Support Service (DSS):
+
+- Download opencds-knowledge-repository-data.zip and unzip it to a location on the same machine.  
+  NOTE: you won't have to change any configuration settings if you unzip it into "C:/OpenCDS".  
+
+	This zipfile contains some sample KnowledgeModules (KM's), and some required configuration settings.  
+	Once you have installed this introductory configuration, it will be referred to below as the 
+	"Knowledge Repository" (aka "KR") for OpenCDS.
+
+- Install latest version of Tomcat 6 or 7, and locate the deployment directory (e.g., 
+	C:\Program Files\Apache Software Foundation\Tomcat 6.0\webapps).
+  NOTE:
+	The Demo war file is built to run on Tomcat 6
+	The Demo war file does not properly deploy on JBoss without making some changes.
+
+- Download opencds-decision-support-service.war (if your downloaded file is named something
+	like opencds-decisiion-support-service.1.1.4-FINAL.war, rename it to be
+	opencds-decision-support-service.war).
+
+- Move the war file into servlet container (e.g., in Tomcat this would be the "tomcat\webapps" folder)
+	so that the servlet container includes a file named opencds-decision-support-service.war. 
+  NOTE: There is a configuration file named "opencds-decision-support-service-config.xml" that you will 
+	need to update if you have located the sample KR somewhere other than "C:/OpenCDS".  This file is 
+	found inside the exploded war file at 
+	<servletContainerPath>/opencds-decision-support-service/WEB-INF/classes 
+	and it specifies a default path of "C:/OpenCDS/opencds-knowledge-repository-data/resources_v1.1".
+
+- Start servlet container (Tomcat).
+
+- OpenCDS DSS with the sample knowledge bases (rules) found in the downloaded KR should now be running 
+at http://localhost:8080/opencds-decision-support-service/evaluate.  If it was installed on your local 
+machine, you should be able to verify that it is running by pointing a web-browser to 
+http://localhost:8080/opencds-decision-support-service and viewing the WSDL.  If it is installed on a
+different machine, or you changed the default port to something different than 8080, make the 
+appropriate changes to the URL above.
+
+- To interact with the DSS, a convenient program to use for testing and demo is the oXygen XML editor 
+(http://www.oxygenxml.com).  We use the Academic/Non-Commercial version, and a free trial license is 
+available at http://www.oxygenxml.com/register.html). 
+ 
+Other tools are available, and some are open-source, such as SoapUI at http://www.soapui.org , or the 
+FireFox addon at https://addons.mozilla.org/en-US/firefox/addon/soa-client, for those of you who want 
+to experiment.  
+
+You can also use the open-source MirthConnect software to test rules, as well as in a
+production environment, because it includes support for web services.  The software can be found at
+http://www.mirthcorp.com/products/mirth-connect.  We have some sample channels available in the Demo
+folder.
+
+- If you are using oXygen, go to Tools --> WSDL SOAP Analyzer --> Saved SOAP request, and use the 
+sample .wssc files below.  Hitting the "Send" button will interact with the DSS.  Note that a base64 
+converter for reading base64 payloads is available at http://ostermiller.org/calc/encode.html or 
+http://www.opinionatedgeek.com/DotNet/Tools/Base64Encode/default.aspx.
+
+- We plan to make available a Java sample client for the DSS in the future.  
+	Please let us know if you think this item should be prioritized.
