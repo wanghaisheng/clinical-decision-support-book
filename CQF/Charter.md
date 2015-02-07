@@ -1,10 +1,10 @@
 # Clinical+Quality+Framework+Charter+and+Members   
 
 ## 1.挑战
-鉴于CDS和eCQM质控指标紧密相关，拥有很多共同的需求，但是二者所采用的标准则是各异的，主要是表达患者数据和计算机化处理逻辑的方法是不同的
+鉴于CDS和eCQM质控指标紧密相关，拥有很多共同的需求，但是二者所采用的标准则是各异的，主要是表达患者数据和计算机化处理逻辑的方法是不同的      
 
 | 类别 | 患者数据|处理逻辑|     
-| -- | -- | -- |      
+| ----------- | ----------- | ----------- |      
 | CDS | VMR | CDS knowledge artifact实施指南 |    
 | ECQM | quality reporting data architecture物理模型quality data model逻辑模型 | Health quality measure format HQMF 物理模型Quality data model逻辑模型 |
 
