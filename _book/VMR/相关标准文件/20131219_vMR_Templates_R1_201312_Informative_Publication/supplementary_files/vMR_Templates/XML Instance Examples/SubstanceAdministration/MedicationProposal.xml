@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Comprehensive example including all optional elements -->
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:r2 ../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2"
+    xmlns:dt="urn:hl7-org:cdsdt:r2" xsi:type="SubstanceAdministrationProposal">
+    <templateId root="2.16.840.1.113883.3.1829.11.9.3.4" identifierName="MedicationProposal"/>
+    <templateId root="2.16.840.1.113883.3.1829.11.14.1.9" identifierName="Frequency"/>
+    <substance>
+        <substanceCode code="" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM">
+            <dt:displayName value=""/>
+        </substanceCode>
+        <substanceBrandCode code="" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM">
+            <dt:displayName value=""/>
+        </substanceBrandCode>
+        <substanceGenericCode code="" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNORM">
+            <dt:displayName value=""/>
+        </substanceGenericCode>
+        <strength>
+            <dt:numerator xsi:type="dt:PQ" value="0" unit="mg"/>
+            <dt:denominator xsi:type="dt:PQ"  value="0" unit="mL"/>
+        </strength>
+        <form code="" codeSystem="2.16.840.1.113883.3.88.12.3221.8.11" codeSystemName="HITSP 80 Table 2-74">
+            <dt:displayName value=""/>
+        </form>
+    </substance>
+    <substanceAdministrationGeneralPurpose code="18629005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT">
+        <dt:displayName value="Administration of drug or medicament (procedure)"/>
+    </substanceAdministrationGeneralPurpose>
+    <dose>
+        <doseType code="" codeSystem="" codeSystemName="">
+            <dt:displayName value=""/>
+        </doseType>
+        <doseQuantity highClosed="true" lowClosed="false">
+            <dt:low value="1" unit="mg"/>
+            <dt:high value="1" unit="mg"/>
+        </doseQuantity>
+        <approachBodySite>
+            <bodySiteCode code="" codeSystem="" codeSystemName="">
+                <dt:displayName value=""/>
+            </bodySiteCode>
+            <laterality code="" codeSystem="" codeSystemName="">
+                <dt:displayName value=""/>
+            </laterality>
+        </approachBodySite>
+        <targetBodySite>
+            <bodySiteCode code="" codeSystem="" codeSystemName="">
+                <dt:displayName value=""/>
+            </bodySiteCode>
+            <laterality code="" codeSystem="" codeSystemName="">
+                <dt:displayName value=""/>
+            </laterality>
+        </targetBodySite>
+        <deliveryRoute code="PTS" codeSystem="2.16.840.1.113883.3.88.12.3221.8.7" codeSystemName="HITSP 80 Table 2-75 Medication Route FDA Value Set">
+            <dt:displayName value=""/>
+        </deliveryRoute>
+        <deliveryMethod code="" codeSystem="2.16.840.1.113883.1.11.16931" codeSystemName="HL7 v3 RouteByMethod (and all children of this DE)">
+            <dt:displayName value=""/>
+        </deliveryMethod>
+        <deliveryRate highClosed="true" lowClosed="false">
+            <dt:low value="1" unit="mg"/>
+            <dt:high value="1" unit="hr"/>
+        </deliveryRate>
+        <!-- Note that if code does not exist, one may use FrequencyAsInterval instead -->
+        <frequency>
+            <cycle>
+                <cycleLength value="8" unit="h"/>
+                <endOn value="20130303192012"/>
+                <cycleTiming xsi:type="RecurringEvent">
+                    <when code="PTS" codeSystem="PTS" codeSystemName="PTS">
+                        <dt:displayName value="PTS"/>
+                    </when>
+                    <frequencyPerCycle value="1"/>
+                    <intervalIsImportant value="false"/>
+                </cycleTiming>
+            </cycle>
+        </frequency>
+    </dose>
+    <proposedAdministrationTimeInterval highClosed="true" lowClosed="true">
+        <dt:low value="2012"/>
+        <dt:high value="2012"/>
+    </proposedAdministrationTimeInterval>
+    <numberFillsAllowed value="4"/>
+</ClinicalStatement>
+
+<!-- PTS = per template specification -->

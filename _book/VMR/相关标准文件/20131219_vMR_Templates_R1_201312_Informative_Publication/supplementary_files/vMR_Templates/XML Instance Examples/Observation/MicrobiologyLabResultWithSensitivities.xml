@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../schemata/vmr/vmr.xsd"
+    xmlns:dt="urn:hl7-org:cdsdt:r2" xmlns="urn:hl7-org:vmr:r2" xsi:type="ObservationResult">
+    <templateId root="2.16.840.1.113883.3.1829.11.6.3.12" identifierName="MicrobiologyLabResultWithSensitivites"/>
+    <relatedEntity>
+        <templateId root=" 2.16.840.1.113883.3.1829.11.16.2.19" identifierName="Specimen Source"/>
+        <targetRole codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="Specimen Source"/>
+        </targetRole>
+        <entity xsi:type="Specimen">
+            <templateId root="2.16.840.1.113883.3.1829.11.13.5.2" identifierName="Lab Specimen"/>
+            <source codeSystem="PTS" codeSystemName="PTS" code="Code for some body fluid"/>
+        </entity>
+    </relatedEntity>
+    <!--Repeat this statement once per pair of organism and antimicrobial substance -->
+    <relatedClinicalStatement>
+        <templateId root="2.16.840.1.113883.3.1829.11.16.2.18" identifierName="Related Sensitivity"/>
+        <targetRole codeSystem="PTS" codeSystemName="PTS" code="PTS">
+            <dt:displayName value="PTS"/>
+        </targetRole>
+        <clinicalStatement xsi:type="ObservationResult">
+            <templateId root="2.16.840.1.113883.3.1829.11.6.3.11" identifierName="Microorganism Sensitivity"/>
+            <!-- content as specified by template -->                       
+            <relatedEntity>
+                <templateId root="2.16.840.1.113883.3.1829.11.16.2.12" identifierName="Microorganism Found"/>
+                <targetRole codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType" code="PART"/>
+                <entity>
+                    <templateId root="2.16.840.1.113883.3.1829.11.13.4.2" identifierName="Identified Microorganism Species"/>
+                    <entityType codeSystem="PTS" codeSystemName="PTS" code="Code for a microorganism species"/>
+                </entity>
+            </relatedEntity>
+            <relatedEntity>
+                <templateId root="2.16.840.1.113883.3.1829.11.16.2.13" identifierName="MedicationSensitivity"/>
+                <targetRole codeSystem="2.16.840.1.113883.5.90" codeSystemName="HL7 ParticipationType" code="PART"/>
+                <entity xsi:type="AdministrableSubstance">
+                    <templateId root="2.16.840.1.113883.3.1829.11.13.6.4" identifierName="AntiMicrobialSubstance"/>
+                    <substanceCode codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="308467"/>
+                </entity>
+            </relatedEntity>
+            <observationFocus codeSystem="PTS" codeSystemName="PTS" code="Code for Antibx sensitivity">
+                <dt:displayName value="PTS"/>
+            </observationFocus>
+            <interpretation codeSystem="PTS" codeSystemName="PTS" code="PTS">
+                <dt:displayName value="PTS"/>
+            </interpretation>
+            <observationEventTime>
+                <dt:low value="20130613080500"/>
+                <dt:high value="20130613080500"/>
+            </observationEventTime>
+            <observationValue>
+                <value xsi:type="dt:CD" codeSystem="OID for CS" codeSystemName="PTS" code="Code for Resistant">
+                    <dt:displayName value="PTS"/>
+                </value>
+            </observationValue>
+        </clinicalStatement>
+    </relatedClinicalStatement>
+    <observationFocus>
+        <dt:displayName value="PTS"/>
+    </observationFocus>
+</ClinicalStatement>
+
+<!-- PTS = per template specification -->
+

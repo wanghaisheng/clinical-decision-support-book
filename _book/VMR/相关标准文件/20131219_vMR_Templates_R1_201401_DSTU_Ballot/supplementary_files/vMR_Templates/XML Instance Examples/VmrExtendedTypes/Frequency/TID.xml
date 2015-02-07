@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TID: Take 3 times a day before meals -->
+<Cycle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2">
+    <cycleLength value="24" unit="h"/>
+    <cycleTiming xsi:type='RecurringEvent'>
+        <!-- Before meals -->
+        <when code="123" codeSystem="1.111.11111.11.1.1" codeSystemName="SNOMED-CT"/>
+        <frequencyPerCycle value="3"/>
+        <intervalIsImportant value="false"/>
+    </cycleTiming>
+</Cycle>

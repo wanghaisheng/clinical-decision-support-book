@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example vMR.  Note that templates are included in this example for illustrative purposes only.  For the definitive specification of templates, please see the HL7 vMR Templates specification.-->
+<vMR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:vmr:r2 ../Schema/vmr/vmr.xsd" xmlns:dt="urn:hl7-org:cdsdt:r2"
+ xmlns="urn:hl7-org:vmr:r2">
+	<templateId root="OID for vMR" identifierName="String"/>
+	<!-- The subject of the patient record -->
+	<patient>
+		<templateId root="2.16.840.1.113883.3.1829.11.2.2.2" identifierName="PatientDOBGenderRaceEthnicity"/>
+		<!-- The primary provider associated with this patient -->
+		<relatedEntity xsi:type="RelatedEntity">
+			<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+				<dt:displayName value="Primary Provider"/>
+			</targetRole>
+			<entity xsi:type="Person">
+				<templateId root="2.16.840.1.113883.3.1829.11.13.1.3" identifierName="Provider"/>
+				<description value=""/>
+				<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Provider"/>
+				</entityType>
+				<attribute>
+					<name codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+						<dt:displayName value="TBD"/>
+					</name>
+					<value xsi:type="Value">
+						<value xsi:type="dt:CD" codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+							<dt:displayName value="TBD"/>
+						</value>
+					</value>
+				</attribute>
+				<relatedEntity xsi:type="RelatedEntity">
+					<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<entity xsi:type="Organization">
+						<templateId root="TBD" identifierName=""/>
+						<name value="ABCDE Clinic"/>
+					</entity>
+				</relatedEntity>
+			</entity>
+		</relatedEntity>
+		<!--<age value="3.14159" unit="y"/>-->
+		<birthTime value="19630525"/>
+		<ethnicity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		<gender codeSystem="2.16.840.1.113883.1.11.1" codeSystemName="HL7" code="M"/>
+		<race codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		<!-- An example of an adverse event -->
+		<clinicalStatement xsi:type="AdverseEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.3.1.2" identifierName="AdverseEventToMedicationOrImmunization"/>
+			<documentationTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</documentationTime>
+			<relatedEntity xsi:type="RelatedEntity">
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<entity xsi:type="AdministrableSubstance">
+					<substanceCode/>
+				</entity>
+			</relatedEntity>
+			<adverseEventCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventAgent codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</adverseEventTime>
+			<affectedBodySite>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</affectedBodySite>
+			<adverseEventStatus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<severity/>
+		</clinicalStatement>
+		<!-- An example of an adverse event -->
+		<clinicalStatement xsi:type="AdverseEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.3.1.3" identifierName="AdverseEventToFood"/>
+			<documentationTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</documentationTime>
+			<relatedEntity xsi:type="RelatedEntity">
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<entity xsi:type="Entity">
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<adverseEventCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventAgent codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</adverseEventTime>
+			<adverseEventStatus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of an adverse event -->
+		<clinicalStatement xsi:type="AdverseEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.3.1.4" identifierName="AdverseEventToOtherSubstance"/>
+			<documentationTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</documentationTime>
+			<relatedEntity xsi:type="RelatedEntity">
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<entity xsi:type="Entity">
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<adverseEventCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventAgent codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</adverseEventTime>
+			<affectedBodySite>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</affectedBodySite>
+			<adverseEventStatus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of a denied adverse event -->
+		<clinicalStatement xsi:type="DeniedAdverseEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.3.1.2" identifierName="DeniedAdverseEvent"/>
+			<documentationTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</documentationTime>
+			<adverseEventCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventAgent codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</adverseEventTime>
+		</clinicalStatement>
+		<!-- An example of an adverse event -->
+		<clinicalStatement xsi:type="AdverseEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.3.1.5" identifierName="AdverseEventDetail"/>
+			<documentationTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</documentationTime>
+			<adverseEventCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventAgent codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<adverseEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</adverseEventTime>
+			<affectedBodySite>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</affectedBodySite>
+			<adverseEventStatus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<criticality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of an encounter event -->
+		<clinicalStatement xsi:type="EncounterEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.4.3.6" identifierName="EncounterListEntry"/>
+			<encounterType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<encounterEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</encounterEventTime>
+		</clinicalStatement>
+		<!-- An example of an encounter event -->
+		<clinicalStatement xsi:type="EncounterEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.4.3.7" identifierName="EncounterDetail"/>
+			<relatedEntity>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Place of Service"/>
+				</targetRole>
+				<entity xsi:type="Facility">
+					<templateId root="2.16.840.1.113883.3.1829.11.13.1.4" identifierName="Facility"/>
+					<id root="OID for TBD" extension="TBD" identifierName="University of Utah Hospital"/>
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+						<dt:displayName value="Hospital"/>
+					</entityType>
+				</entity>
+			</relatedEntity>
+			<relatedClinicalStatement>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Diagnosis Present on Admission"/>
+				</targetRole>
+				<clinicalStatement xsi:type="Problem">
+					<templateId root="2.16.840.1.113883.3.1829.11.7.2.16" identifierName="EncounterDiagnosis"/>
+					<conditionCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<conditionEffectiveTime>
+						<dt:low value="20130613080500"/>
+						<dt:high value="20130613080500"/>
+					</conditionEffectiveTime>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<relatedClinicalStatement>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Component"/>
+				</targetRole>
+				<clinicalStatement xsi:type="ObservationResult">
+					<templateId root="2.16.840.1.113883.3.1829.11.6.3.6" identifierName="SimpleLabResult"/>
+					<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<observationEventTime/>
+					<observationValue xsi:type="Value">
+						<value xsi:type="dt:PQ" unit="%" value="40"/>
+					</observationValue>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<relatedClinicalStatement>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Component"/>
+				</targetRole>
+				<clinicalStatement xsi:type="ProcedureEvent">
+					<templateId root="2.16.840.1.113883.3.1829.11.8.1.2" identifierName="SimpleProcedureHistoryCodeAndDateOnly"/>
+					<procedureCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<procedureTime>
+						<dt:low value="20130613080500"/>
+						<dt:high value="20130613080500"/>
+					</procedureTime>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<encounterType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<encounterEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</encounterEventTime>
+		</clinicalStatement>
+		<!-- An example of a goal -->
+		<clinicalStatement xsi:type="Goal">
+			<templateId root="2.16.840.1.113883.3.1829.11.5.1.2" identifierName="CurrentGoalListEntryCodeAndTargetOnly"/>
+			<goalFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<targetGoalValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="lbs" value="150"/>
+			</targetGoalValue>
+		</clinicalStatement>
+		<!-- An example of a goal -->
+		<clinicalStatement xsi:type="Goal">
+			<templateId root="2.16.840.1.113883.3.1829.11.5.1.3" identifierName="CurrentGoalListEntryCodeTimeAndTargetOnly"/>
+			<goalFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<goalPursuitEffectiveTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</goalPursuitEffectiveTime>
+			<targetGoalValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="lbs" value="150"/>
+			</targetGoalValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.6" identifierName="SimpleLabResult"/>
+			<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="%" value="40"/>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.7" identifierName="ObservationResultWithInterpretation"/>			
+			<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<interpretation codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="%" value="40"/>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.9" identifierName="MicrobiologyLabResult"/>			
+			<relatedEntity>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Specimen Source"/>
+				</targetRole>
+				<entity xsi:type="Entity">
+					<templateId root="2.16.840.1.113883.3.1829.11.13.5.1" identifierName="Specimen"/>
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<relatedEntity>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<entity xsi:type="Entity">
+					<templateId root="2.16.840.1.113883.3.1829.11.13.4.1" identifierName="IdentifiedMicroorganism"/>
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationMethod codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<targetBodySite>
+				<templateId root="2.16.840.1.113883.3.1829.11.14.1.11" identifierName="BodySiteBodySiteCodeRequired"/>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</targetBodySite>
+			<interpretation codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="%" value="40"/>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.12" identifierName="MicrobiologyLabResultWithSensitivities"/>
+			<relatedEntity>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD">
+					<dt:displayName value="Specimen Source"/>
+				</targetRole>
+				<entity xsi:type="Entity">
+					<templateId root="2.16.840.1.113883.3.1829.11.13.5.1" identifierName="Specimen"/>
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<relatedClinicalStatement>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<clinicalStatement xsi:type="ObservationResult">
+					<templateId root="2.16.840.1.113883.3.1829.11.6.3.11" identifierName="MicroorganismSensitivity"/>
+					<relatedEntity>
+						<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+						<entity xsi:type="Entity">
+							<templateId root="2.16.840.1.113883.3.1829.11.13.4.1" identifierName="IdentifiedMicroorganism"/>
+							<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+						</entity>
+					</relatedEntity>
+					<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<observationMethod codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					<targetBodySite>
+						<templateId root="2.16.840.1.113883.3.1829.11.14.1.11" identifierName="BodySiteBodySiteCodeRequired"/>
+						<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+						<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+					</targetBodySite>
+					<observationEventTime>
+						<dt:low value="20130613080500"/>
+						<dt:high value="20130613080500"/>
+					</observationEventTime>
+					<observationValue xsi:type="Value">
+						<value xsi:type="dt:PQ" unit="%" value="40"/>
+					</observationValue>
+				</clinicalStatement>
+			</relatedClinicalStatement>
+			<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationMethod codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<targetBodySite>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</targetBodySite>
+			<interpretation codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PQ" unit="%" value="40"/>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.11" identifierName="MicroorganismSensitivity"/>
+			<relatedEntity>
+				<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<entity xsi:type="Entity">
+					<templateId root="2.16.840.1.113883.3.1829.11.13.4.1" identifierName="IdentifiedMicroorganism"/>
+					<entityType codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</entity>
+			</relatedEntity>
+			<observationFocus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<observationMethod codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<targetBodySite>
+				<bodySiteCode codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<laterality codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			</targetBodySite>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PIVL_TS" alignment="DW" isFlexible="true">
+					<dt:phase xsi:type="dt:IVL_TS"><dt:low value="20130825"/><dt:high value="20130826"/></dt:phase>
+					<dt:period value="1" unit="wk"/>
+					<dt:frequency xsi:type="dt:RTO">
+						<dt:numerator xsi:type="dt:REAL" value="1.0"/>
+						<dt:denominator xsi:type="dt:REAL" value="1.0"/>
+					</dt:frequency>
+					<dt:count value="10"/>
+				</value>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of an observation result -->
+		<clinicalStatement xsi:type="ObservationResult">
+			<templateId root="2.16.840.1.113883.3.1829.11.6.3.10" identifierName="VitalSigns"/>
+			<observationFocus codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="8480-6">
+				<dt:displayName value="Intravascular Systolic"/>
+			</observationFocus>
+			<observationEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</observationEventTime>
+			<observationValue xsi:type="Value">
+				<value xsi:type="dt:PQ" value="145" unit="mm[Hg]"/>
+			</observationValue>
+		</clinicalStatement>
+		<!-- An example of a problem -->
+		<clinicalStatement xsi:type="Problem">
+			<templateId root="2.16.840.1.113883.3.1829.11.7.2.4" identifierName="ActiveProblemListEntryCodeOnly"/>
+			<conditionCode codeSystem="OID for ICD9CM" codeSystemName="ICD9CM" code="250.00">
+				<dt:displayName value="Diabetes mellitus"/>
+			</conditionCode>
+		</clinicalStatement>
+		<!-- An example of a problem -->
+		<clinicalStatement xsi:type="Problem">
+			<templateId root="2.16.840.1.113883.3.1829.11.7.2.5" identifierName="DiagnosisHistoryEntryCodeTimeRangeCriticalityAndStatusOnly"/>
+			<conditionCode codeSystem="OID for ICD9CM" codeSystemName="ICD9CM" code="250.00">
+				<dt:displayName value="Diabetes mellitus"/>
+			</conditionCode>
+			<conditionEffectiveTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</conditionEffectiveTime>
+			<conditionStatus codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of a problem -->
+		<clinicalStatement xsi:type="Problem">
+			<templateId root="2.16.840.1.113883.3.1829.11.7.2.17" identifierName="FamilyMedicalHistoryEntryCodeTimeRangeCriticalityAndStatusOnly"/>
+			<conditionCode codeSystem="OID for ICD9CM" codeSystemName="ICD9CM" code="250.00">
+				<dt:displayName value="Diabetes mellitus"/>
+			</conditionCode>
+			<conditionEffectiveTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</conditionEffectiveTime>
+			<conditionStatus codeSystem="OID for SNOMED CT" codeSystemName="SNOMED CT" code="[statusCode]"/>
+			<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of a problem -->
+		<clinicalStatement xsi:type="Problem">
+			<templateId root="2.16.840.1.113883.3.1829.11.7.2.16" identifierName="EncounterDiagnosis"/>
+			<conditionCode codeSystem="OID for ICD9CM" codeSystemName="ICD9CM" code="250.00">
+				<dt:displayName value="Diabetes mellitus"/>
+			</conditionCode>
+			<diagnosticEventTime>
+				<dt:low value="20130613080500"/>
+				<dt:high value="20130613080500"/>
+			</diagnosticEventTime>
+			<priorityInEncounter codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+		</clinicalStatement>
+		<!-- An example of a procedure event -->
+		<clinicalStatement xsi:type="ProcedureEvent">
+			<templateId root="2.16.840.1.113883.3.1829.11.8.1.2" identifierName="SimpleProcedureHistory"/>
+			<procedureCode codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT4" code="19303">
+				<dt:displayName value="Mastectomy, simple, complete"/>
+			</procedureCode>
+		</clinicalStatement>
+		<!-- An example of a composite substance proposal such as a composite IV having an additive and a diluent -->
+		<clinicalStatement xsi:type="CompositeSubstanceProposal">
+			<substance>
+				<!-- A code representing the composite substance -->
+				<substanceCode code="" codeSystem=""/>
+			</substance>
+			<dose>
+				<doseQuantity>
+					<dt:low value="1" unit=""/>
+					<dt:high value="2" unit=""/>
+				</doseQuantity>
+			</dose>
+			<constituent xsi:type="Constituent">
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem=""/>
+				</substance>
+				<substanceAmount>
+					<dt:low value="2" unit=""/>
+					<dt:high value="3" unit=""/>
+				</substanceAmount>
+			</constituent>
+			<constituent xsi:type="Constituent">
+				<constituentType>
+					<dt:displayName value="diluent"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem=""/>
+				</substance>
+				<substanceAmount>
+					<dt:low value="2" unit=""/>
+					<dt:high value="3" unit=""/>
+				</substanceAmount>
+			</constituent>
+		</clinicalStatement>
+		<!-- An example of a composite substance proposal such as a composite drug -->
+		<clinicalStatement xsi:type="CompositeSubstanceProposal">
+			<templateId root="2.16.840.1.113883.3.1829.11.9.13.1" identifierName="CompositeIVProposal"/>
+			<comment>
+				<type code="" codeSystem="" codeSystemName=""><dt:displayName value=""/></type>
+				<content mediaType="application/pdf" value="description of the pdf"><dt:data>base64binary</dt:data></content>
+			</comment>
+			<substance>
+				<!-- A code representing the composite substance -->
+				<substanceCode code="" codeSystem=""/>
+			</substance>
+			<dose>
+				<doseType/>
+				<doseQuantity/>
+				<doseRestriction>
+					<maxDoseForInterval value="100" unit="mg"/>
+					<timeInterval value="1" unit="hr"/>
+				</doseRestriction>
+				<deliveryRoute/>
+				<deliveryRate/>
+				<infuseOver value="2" unit="hr"/>
+			</dose>
+			<proposedAdministrationTimeInterval>
+				<dt:low value="2012"/>
+				<dt:high value="2013"/>
+			</proposedAdministrationTimeInterval>
+			<prnReason code="" codeSystem="" codeSystemName=""/>
+			<urgency code="" codeSystem="" codeSystemName=""><dt:displayName value=""/></urgency>
+			<validAdministrationTimeInterval>
+				<dt:low value="2012"/>
+				<dt:high value="2013"/>
+			</validAdministrationTimeInterval>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="200" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="1" unit="Tab"/>
+					</strength>
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low xsi:type="dt:PQ" value="200" unit="mg"/>
+					<dt:high xsi:type="dt:PQ" value="250" unit="mg"/>
+				</substanceAmount>
+			</constituent>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="200" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="1" unit="Tab"/>
+					</strength>
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low xsi:type="dt:PQ" value="200" unit="mg"/>
+					<dt:high xsi:type="dt:PQ" value="250" unit="mg"/>
+				</substanceAmount>
+			</constituent>
+		</clinicalStatement>
+		<!-- An example of a composite substance order -->
+		<clinicalStatement xsi:type="CompositeSubstanceOrder">
+			<templateId root="2.16.840.1.113883.3.1829.11.9.14.1" identifierName="CompositeIVOrder"/>
+			<comment>
+				<type code="" codeSystem="" codeSystemName=""/>
+				<content value=""/>
+			</comment>
+			<substance>
+				<!-- A code representing the composite substance -->
+				<substanceCode/>
+			</substance>
+			<dose>
+				<doseType/>
+				<doseQuantity/>
+				<doseRestriction>
+					<maxDoseForInterval value="100" unit="mg"/>
+					<timeInterval value="1" unit="hr"/>
+				</doseRestriction>
+				<deliveryRoute/>
+				<deliveryRate/>
+				<infuseOver value="2" unit="hr"/>
+			</dose>
+			<administrationTimeInterval>
+				<dt:low value="2012"/>
+				<dt:high value="2013"/>
+			</administrationTimeInterval>
+			<prnReason code="" codeSystem="" codeSystemName=""/>
+			<urgency code="" codeSystem="" codeSystemName=""/>
+			<validAdministrationTimeInterval>
+				<dt:low value="2012"/>
+				<dt:high value="2013"/>
+			</validAdministrationTimeInterval>
+			<orderEventTime>
+				<dt:low value="2012"/>
+				<dt:high value="2013"/>
+			</orderEventTime>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="diluent"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="200" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="1000" unit="ml"/>
+					</strength>
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low value="200" unit="ml"/>
+					<dt:high value="250" unit="ml"/>
+				</substanceAmount>
+			</constituent>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="20" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="100" unit="ml"/>
+					</strength>
+					
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low value="20" unit="ml"/>
+					<dt:high value="25" unit="ml"/>
+				</substanceAmount>
+			</constituent>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="20" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="100" unit="ml"/>
+					</strength>
+					
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low value="20" unit="ml"/>
+					<dt:high value="25" unit="ml"/>
+				</substanceAmount>
+			</constituent>
+			<constituent>
+				<constituentType>
+					<dt:displayName value="additive"/>
+				</constituentType>
+				<substance>
+					<substanceCode code="" codeSystem="" codeSystemName=""/>
+					<strength>
+						<dt:numerator xsi:type="dt:PQ" value="20" unit="mg"/>
+						<dt:denominator xsi:type="dt:PQ" value="100" unit="ml"/>
+					</strength>
+				</substance>
+				<substanceAmount xsi:type="dt:IVL_PQ">
+					<dt:low value="20" unit="ml"/>
+					<dt:high value="25" unit="ml"/>
+				</substanceAmount>
+			</constituent>
+		</clinicalStatement>
+		<!-- An example of a laboratory proposal -->
+		<clinicalStatement xsi:type="LaboratoryProposal">
+			<templateId root="2.16.840.1.113883.3.1829.11.8.3.3"/>
+			<comment>
+				<type/>
+			</comment>
+			<procedureCode code="" codeSystem="2.16.840.1.113883.3.88.12.80.28" codeSystemName=""/>
+			<procedureMethod code="" codeSystem="" codeSystemName=""/>
+			<proposedProcedureTime highClosed="true" lowClosed="true"/>
+			<frequency>
+				<cycle>
+					<cycleTiming xsi:type="CodedRecurringEvent">
+						<repeatCode>
+							<dt:displayName value="QID"/>
+						</repeatCode>
+					</cycleTiming>
+				</cycle>
+			</frequency>
+			<reason code="" codeSystem="" codeSystemName=""/>
+			<urgency code="" codeSystem="2.16.840.1.113883.6.96" codeSystemName=""/>
+			<collectionMethod code="" codeSystem="2.16.840.1.113883.12.488" codeSystemName=""/>
+			<specialHandling code="" codeSystem="" codeSystemName=""/>
+			<specimenSource code="" codeSystem="" codeSystemName=""/>
+			<suspectedPathogen code="" codeSystem="2.16.840.1.113883.6.96" codeSystemName=""/>
+		</clinicalStatement>
+		<!-- end of primary ClinicalStatements -->
+		<!-- An example of a patient relative -->
+		<relatedEvaluatedPerson>
+			<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<otherEvaluatedPerson xsi:type="EvaluatedPerson">
+				<templateId root="2.16.840.1.113883.3.1829.11.2.4.2" identifierName="PatientRelative"/>
+				<age value="3.14159" unit="y"/>
+				<ageAtDeath value="68" unit="y"/>
+				<birthTime value="19630525"/>
+				<ethnicity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				<gender codeSystem="2.16.840.1.113883.1.11.1" codeSystemName="HL7" code="M"><dt:displayName value="Male"/></gender>
+				<isDeceased value="false"/>
+			</otherEvaluatedPerson>
+		</relatedEvaluatedPerson>
+		<!-- An example of a patient relative -->
+		<relatedEvaluatedPerson>
+			<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<otherEvaluatedPerson xsi:type="EvaluatedPerson">
+				<templateId root="2.16.840.1.113883.3.1829.11.2.5.2" identifierName="PatientRelativeMinimal"/>
+				<ageAtDeath value="68" unit="y"/>
+				<gender codeSystem="2.16.840.1.113883.1.11.1" codeSystemName="HL7" code="M"><dt:displayName value="Male"/></gender>
+			</otherEvaluatedPerson>
+		</relatedEvaluatedPerson>
+		<!-- An example of a patient relative -->
+		<relatedEvaluatedPerson>
+			<targetRole codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+			<otherEvaluatedPerson xsi:type="EvaluatedPerson">
+				<templateId root="2.16.840.1.113883.3.1829.11.2.5.2" identifierName="PatientRelativeMinimal"/>
+				<ageAtDeath value="68" unit="y"/>
+				<gender codeSystem="2.16.840.1.113883.1.11.1" codeSystemName="HL7" code="M"><dt:displayName value="Male"/></gender>
+				<clinicalStatement xsi:type="Problem">
+					<templateId root="2.16.840.1.113883.3.1829.11.7.2.17" identifierName="FamilyMedicalHistoryEntryCodeTimeRangeCriticalityAndStatusOnly"/>
+					<conditionCode codeSystem="OID for ICD9CM" codeSystemName="ICD9CM" code="250.00"><dt:displayName value="Diabetes mellitus"/></conditionCode>
+					<conditionEffectiveTime>
+						<dt:low value="20130613080500"/>
+						<dt:high value="20130613080500"/>
+					</conditionEffectiveTime>
+					<conditionStatus codeSystem="OID for SNOMED CT" codeSystemName="SNOMED CT" code="[statusCode]"><dt:displayName value="[statusName]"/></conditionStatus>
+					<severity codeSystem="OID for TBD" codeSystemName="TBD" code="TBD"/>
+				</clinicalStatement>
+			</otherEvaluatedPerson>
+		</relatedEvaluatedPerson>
+	</patient>
+</vMR>

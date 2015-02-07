@@ -1,0 +1,58 @@
+last updated 2012-09-17
+=======================================
+
+To setup OpenCDS knowledge editor(Drools Guvnor) in JBoss Application Server:
+
+     - Follow the instructions in the Project Documents / OpenCDS Developer Workstation 
+     Configuration Instructions for 1.1 Release.doc to set up JBoss Drools in JBoss AS 
+     v7.0.2 or v7.1.1 or newer.  
+          NOTE: JBoss Application Server is required to develop BPMN2 / Oryx Business
+		Processes in Guvnor.  If you intend to use processes, then you MUST
+		use JBoss Application Server.  We have not been able to use Tomcat with
+		jBPM, although they say it can be done.  If you want to try, then you will
+		probably want to study the jBPM documentation at section 10.5 of
+		http://docs.jboss.org/jbpm/v5.3/userguide/
+
+To setup OpenCDS knowledge editor(Drools Guvnor) in Tomcat:
+
+     - Follow the instructions in the Project Documents / OpenCDS Developer Workstation 
+     Configuration Instructions for 1.1 Release.doc to set up JBoss Drools in Tomcat v6 
+	 or v7. 
+          NOTE:  The latest BPMN2 / Oryx Business Processes are not currently supported 
+		  in Guvnor running under Tomcat, unless you modify the default Tomcat
+		  setup to include additional jars required by the Designer.
+
+=======================================
+
+- Start servlet container (either Tomcat or JBoss, whichever you configured).
+
+- Open Web browser (IE version 8.x, Firefox 13.x, etc.).
+
+	NOTE: Firefox 13.x works out of the box.
+
+	NOTE2: IE version 8.x requires the additional installation of Google Frames 
+		before it will support the jBPM GUI for processes.
+
+	NOTE3: On slower machines, JBoss may timeout deploying drools-guvnor.war and 
+		designer.war.  You will need to modify the JBoss configuration in
+		standalone.xml to increase the timeout.
+
+	NOTE4: JBoss will need additional configuration if you run it anywhere other
+		than localhost, or you want to control what users can logon.  See the
+		JBoss userguide for more info.
+
+- Go to http://localhost:8080/drools-guvnor/org.drools.guvnor.Guvnor/Guvnor.jsp 
+(substituting the correct port if you did not use the default, and substituting the 
+correct server name if you installed somewhere other than on your local machine).
+	NOTE: If you are using the Designer with jBPM processes, you must use port 8080,
+		or make a number of configuration changes to settings stored within the
+		Guvnor and Designer war files.  See section 10.5 of the jBPMN installation
+		guide at: http://docs.jboss.org/jbpm/v5.3/userguide/ 
+
+- Log in with any user name, blank password
+
+- Download the appropriate version of "repository_export.zip" from this website and 
+import it into Guvnor via Administration --> Import/Export.  
+
+	NOTE: this will overwrite any existing Guvnor knowledge repositories -- export a backup 
+	copy first if you need to.  ID and password can be left blank if prompted.

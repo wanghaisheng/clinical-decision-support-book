@@ -1,0 +1,396 @@
+releaseNotes: OpenCDS Version 1.1.5  updated 2013-05-27
+
+=================================
+
+	Features currently included:
+
+1.  Capability of supporting alternative data models.
+2.  Capability of supporting multiple inference engines, potentially including
+		GELLO and custom purpose-built engines.
+3.  Support for a KnowledgeRepository (KR) to store structured Knowledge and
+		structured metadata about that knowledge.  Currently implemented
+		as a file-based system. 
+
+			NOTE: There is a configuration file for the absolute 
+			path to the KR in the opencds-decision-support-service
+			resources named opencds-decision-support-service-config.xml.  
+			
+			If you leave it in the default location, it will be overwritten
+			when you do an update from SVN...  
+			YOU MUST MOVE the sample KR data to a different location and modify 
+			this configuration file to point to this new location before you
+			create or update any KNOWLEDGE (ie Rules, Mappings, etc.).   
+
+			NOTE: all sample data and the sample data repository have been 
+			moved to a separate project, which you can download to a
+			different location than the location of your development KR data.
+			
+4.  DSS Interfaces match latest OMG HL7 DSS specification.
+5.  Support for VMR version 1.0 based on 2011 September ballot
+		version of HL7 DSS WG VMR for HL7 v3 informative specification.
+		This new VMR version implements more business-friendly element
+		names and structures, along with support for a constrained 
+		version of the ISO 21090 datatypes, designed specifically for
+		use in decision support.  It also supports new data structures
+		from the ballot for CDSInput (supporting Context info), CDSOutput,
+		and CDSInputSpecification.
+6.  Support for Drools 5.5 or 5.4, and JBoss BPMN2 processes (Flow) 5.4 or 5.3.
+7.  Support for Apelon DTS.
+=================================
+		
+	Deferred until later Release...
+
+1.  Create definition of structure for documenting templates 
+		in KnowledgeRepository.
+2.  Support for automatic end-to-end test cases to validate responses.  Currently
+		in testing, will be released as an upgrade.
+3.  Enhance the KnowledgeRepository to support hosting in a database.  Currently
+		in testing, expected for release 1.2.0.
+4.  Support for "Common Knowledge" (aka "Static Knowledge") in the KR, to be
+		automatically loaded by OpenCDS for use by rules that are looking for it
+		expected for release 1.2.0.
+5.  Management console to force refresh of cached KMs and other elements, and
+		to allow for remote upload of new/updated KMs.  Currently in testing, 
+		expected for release 1.2.0.
+6.  Support for Drools Stateful Sessions.
+7.  Implement Query and Metadata Discovery operations of OMG HL7 DSS standard.
+8.  Enhanced specification of determination method in mapping files, to allow
+		more flexibility in combining mappings from various sources for use in
+		a specific KnowledgeModule.
+9.	Upgrade to vMR release 2 to support HeD.
+=================================
+
+
+	Changes in version 1.1.5 FINAL 2013-05-27
+	
+1.  Bug fix to EvaluationImpl.java to fix incorrectly initialized evalTime value
+		in the evaluation operation.  EvaluateAtSpecifiedTime was working correctly,
+		and was not changed.
+=================================
+
+
+	Changes in version 1.1.4 FINAL 2013-01-11
+	
+1.  Support for Drools 5.5 and jBPM 5.4
+2.  Bug fix: Elimination of Concurrency issues under load
+3.  Bug fix: Elimination of Memory leaks when using jBPM 
+=================================
+
+
+	Changes in version 1.1.3 FINAL 2012-11-29
+	
+1.  Bug fix: Inability to create substance tag of SubstanceAdministration clinical 
+		statements as cdsOutput.  This involved changes to following:
+		AdministrableSubstanceMapper.java
+		NestedObjectsMapper.java
+		OneObjectMapper.java
+		SubstanceAdministrationBaseMapper.java
+		SubstanceAdministrationEventMapper.java
+		SubstanceAdministrationOrderMapper.java
+		SubstanceAdministrationProposalMapper.java
+		SubstanceDispensationEventMapper.java
+		UndeliveredSubstanceAdministrationMapper.java
+2.  Bug fix: evaluateAtSpecifiedTime operation was not reading configuration
+		correctly.  Fix changed:
+		EvaluationImpl.java
+		DSSEvaluateAdapterShell.java
+3.  Changes to enhance logging of DEBUG and TRACE options.
+=================================
+
+
+	Changes in version 1.1.2 FINAL 2012-11-05
+	
+1.  Bug fix: Memory leak resolved.
+2.  Missing config file added back to source repository.
+=================================
+
+
+	Changes in version 1.1.1 FINAL 2012-09-24
+	
+1.  Bug fix: class EvaluatedPersonAgeAtEvalTime.java corrected to correspond to
+	the code values used in the OpenCDS Apelon DTS enumerations for GUvnor.
+	This discrepancy caused rules developed in Guvnor to fail to fire at
+	run-time in the OpenCDS web service.
+	Changes were made to
+		EvaluatedPersonAgeAtEvalTime.java
+2.  Bug fix: class ClinicalStatementRelationshipMapper.java was corrected to 
+	properly map the id value described in bug fix #2 on 2012-09-17.
+3.  Enhancement: displayName value was added to the VmrOpenCdsConcept.java class
+	allow the return of the displayName of a concept as part of an output
+	(response) message from OpenCDS.  
+	Changes were made to
+		VmrOpenCdsConcept.java
+		and the "toString() methods of classes that inherit from it.
+		BuildOpenCDSConceptLists.java
+=================================
+
+
+	Changes in version 1.1.0 FINAL 2012-09-17
+	
+1.	Package structure was reorganized, to make it easier to suppport more than
+		one inferencing engine and/or data model in a single run-time of OpenCDS,
+		and to move the query and metadata discovery code into separate modules.
+		This involved moving most of the source code that was previously in the
+		opencds-decision-support module into a parent module named 
+		opencds-dss-components, with child modules named:
+			opencds-dss-evaluation
+			opencds-dss-metadata-discovery
+			opencds-dss-query
+			opencds-dss-drools-53-adapter
+			opencds-dss-drools-54-adapter
+			opencds-dss-sample-java-engine
+		The opencds-parent module currently has the opencds-dss-drools-53-adapter
+		(deprecated) and the opencds-dss-sample-java-engine (incomplete) commented 
+		out.
+			NOTE: this reorganization by itself did not cause any logical or 
+			functional changes to the source code.
+2.	Bug fix: BuildOpenCDSConceptLists.java, where the routines that map ID to
+ 		ClinicalStatementRelationshipConcepts (and EntityRelationshipConcept /
+		OtherEvaluatedPersonRelationshipConcept) were mapping to the sourceId
+		/ targetId, and this was incorrect.  All of the "relationship"
+		classes were modified to add an "id" element, and this element is now
+		populated at inbound run-time with a GUID, which is then used to
+		correctly associate more than one relationship between the same two classes 
+		when that occurs, and as the attachment point for the 
+		relationshipConcepts for those classes.  
+		Two persons might be both father and son in an evaluated person relationship, 
+		and also subscriber and member of an insurance plan in a
+		financial relationship, for example.  
+		This involved changes to the following java files:
+			BuildOpenCDSConceptLists.java
+			ClinicalStatementRelationship.java
+			ClinicalStatementRelationshipConcept.java
+			EntityRelationship.java
+			EntityRelationshipConcept.java
+			EvaluatedPersonRelationship.java
+			EvaluatedPersonRelationshipConcept.java
+			ImportStatementsForOpenCDSGuvnor.txt
+3.	Bug fix:  DroolsAdapter.java was modified to correctly identify the names
+		of elements in allFactLists that were inserted into Drools.
+4.	Bug fix:  EncounterEvent.java (internal class) was modified to add an
+		inadvertently omitted encounterEventTime element.  The fix also 
+		involved changes to the EncounterEventMapper.java.
+5.	Functional change:  MappingUtility.java was modified to treat an empty
+		date element in the same way as a null date element, because we didn't
+		think there was any useful semantic different for decision suppport.
+6.	Enhancements:  new methods were added to LogicHelperUtility.java to give
+		more options for doing date comparisons in rules.
+7.	The License and config files for OpenCDS were moved from the opencds-
+		decision-support module to the opencds-common module, so that they are
+		always present in deployments via web services as well as hard-coded
+		attachments directly to the drools-adapter.java, which was useful for
+		testing purposes.
+
+=================================
+
+	Changes in version 1.0.4 FINAL 2012-06-11
+
+1.  Fixes serious bug involving the following 2 mapper files:
+		NestedObjectsMapper.java
+		OneObjectMapper.java
+	The bug involved a bomb when creating OpenCDS output vMR xml that had
+		a nested target relatedClinicalStatement of a different class 
+		than the enclosing source clinicalStatement.
+=================================
+
+	Changes in version 1.0.3 FINAL 2012-05-30
+
+1.  Enhanced usage of vMR JaxB Marshaller and Unmarshaller to improve performance,
+	by caching the objects for the marshaller and unmarshaller.
+2.  Enhanced the performance of rules by caching the KM packages.
+3.  Enhanced the performance of the inferencing engine by caching it as well.
+4.  Provided convenience methods for purging / refreshing the caches, and for
+	limiting cache growth.
+5.  Affected modules include:
+		DSSRequestItem.java 
+		KnowledgeBaseObject.java
+		TimingData.java
+		StringUtility.java
+		DSSEvaluateAdapterShell.java
+		PayloadUnmarshalFactory.java
+		DroolsDecisionEngine53DSSEvaluationAdapter.java
+		OpencdsConfigurator.java
+		Evaluater.java
+		EvaluationFactory.java
+		EvaluationImpl.java
+		SimpleKnowledgeRepository.java
+		BuildCDSInputFactLists.java
+		UnmarshalVMRSchemaPayload2VMR.java
+		IBuildFactLists.java
+		IBuildResultSet.java
+		IMarshalOutbound.java
+		IPayloadUnmarshaller.java
+		BuildVMRSchemaResultSet.java
+		MarshalVMR2VMRSchemaPayload.java
+=================================
+
+	Changes in version 1.0.1 FINAL 2012-04-13
+
+1.  Commented out deprecated file among import statements for Guvnor in:
+	ImportStatementsForOpenCDSGuvnor.txt.  The presence of this import
+	statement caused the sample rules included on the members site to
+	bomb.  Changes will be made to the OpenCDS data model in the sample
+	Guvnor packages in the respository_export, as well as the KR.
+2.  Adjusted opencds-decision-support-service-config-sample.xml to point to
+	locations for the KR that are outside of the build modules for
+	OpenCDS.  Instructions tell you to do this, but the sample file did
+	not match the instructions.
+=================================
+
+	Changes in version 1.0 FINAL 2012-03-30
+
+1.  Some element naming was updated in the TimingData to be more consistent with
+	The potential use of a non-Drools inferencing engine.
+		TimingData.java
+		DroolsDecisionEngine53DSSEvaluationAdapter.java
+		EvaluationImpl.java
+		BuildVMRSchemaResultSet.java
+		IBuildResultSet.java
+		IMappingOutbound.java
+		MarshalVMR2VMRSchemaPayload.java
+2.  An example (not fully functional) of a non-Drools inferencing engine was added:
+		ReportableDiseaseDSSInferencingEngine.java
+3.  A new method was added to the StringUtility to support parsing text fields in 
+	incoming VMR data from Drools rules, looking for any match in the VMR element to  
+	a user-supplied list of substrings:
+		StringUtility.java	
+=================================
+
+	Fixed in version 1.0 release candidate 9.0.2
+
+1.  Concept mapping and Guvnor configuration utilities were ignoring some entries 
+	in Apelon DTS which referred to concepts that were not present in the Alpha 
+	version.  Defect involved
+		SimpleTerminologyManager.java (was loading a deprecated XML file)
+		EnumerationUtility.java (corrected to refer to OpenCDSConceptTypes.java)
+		SimpleKnowledgeRepository.java (modified to load OpenCDSConceptTypes.java
+			instead of OpenCDSConceptTypes.xml)
+		OpenCDSConceptTypes.java (was not completely updated from alpha version)
+		OpenCDSConceptTypes.xml (should have been deprecated, contained 
+			concepts from alpha version)
+=================================
+
+	Fixed in version 1.0 release candidate 9.0.1
+
+1.  OpenCDS was throwing an exception on the invocation of a KnowledgeModule which
+	is pre-compiled into a package (extension .pkg), but doesn't contain a 
+	process named "PrimaryProcess".  This was fixed by adding a parameter to
+	the KnowledgeModules.xml configuration file.  OpenCDS will determine whether
+	a .pkg needs a process started by the presence or absence of the new 
+	parameter named "processName".  If this parameter is populated, then its
+	value will be used as the name of the process that is started.
+=================================
+
+	Fixed in version 1.0 release candidate 9.0
+
+1.  Fixed output formatting of CDSOutput data that failed to include doubly-nested 
+	(and deeper) relatedEntity elements in ClinicalStatements.  
+
+	There were two major enabling VMR schema changes for this fix:  1.) merged 
+	the ClinicalStatementEntityInRoleRelationship.java class into the 
+	EntityRelationship.java class, renaming sourceEntityId to sourceId, and 2.)
+	moved the definition of RelatedEntity directly into each entity class.
+
+	This involved changes to all 28 clinical statement mappers, and 7 entity 
+	mappers, as well as changes to the OneObjectMapper.java facade class, and 
+	creation of new single class (NestedObjectsMapper.java) to handle all 
+	related entity and clinical statement code that had previously been a part 
+	of each entity and clinical statement mapper class. There was also a 
+	general effort made to add more logger.trace() statements.
+		ClinicalStatementEntityInRoleRelationship.java (deprecated)
+		ClinicalStatementEntityInRoleRelationshipMapper.java (deprecated)
+		ClinicalStatementEntityInRoleRelationshipConcept.java (deprecated)
+		RoleConcept.java (deprecated - no longer used)
+		RelatedClinicalStatementMapper.java (deprecated, never had been used)
+		EntityRelationship.java renamed sourceEntityId as sourceId
+		BuildCDSInputFactLists.java removed deprecated references
+		BuildOpenCDSConceptLists.java removed deprecated references
+		BuildVMRSchemaResultSet.java removed deprecated references,
+			heavily refactored code to build organizedLists of Drools 
+			results, cleaned up unneeded loops, forced recalculation
+			of internal structural lists maintained in all clinical
+			statement classes
+		NestedObjectsMapper.java (new class) has all the methods to
+			recursively handle the nested content of related entity
+			lists and related clinical statement lists on both input
+			and output
+		OneObjectMapper.java completely rewrote pushOut methods, did a			
+			lot of refactoring names to clarify what was being done.
+		all 28 classes which extended ClinicalStatement.java: replaced
+			specific code to process related entities and related
+			clinical statements with a single call to
+			NestedObjectMapper.java
+		all 7 classes which extended EntityBase.java: replaced specific
+			code to process related entities with a single call to:
+			NestedObjectMapper.java
+		AdministrableSubstanceMapper.java merged two pushOut methods
+		Entity.java  merged two pushOut methods
+		Facility.java merged two pushOut methods
+		Organization.java  merged two pushOut methods
+		Person.java merged two pushOut methods
+		Specimen.java merged two pushOut methods
+		OrganizedResults.java changed Object types to specific types of
+			VMR base classes in HashMaps
+		
+2.  Fixed randomly dropped factLists and conceptLists by reworking the code that 
+	added them to allFactLists.
+		FactLists.java
+		ConceptLists.java
+		BuildOpenCDSConceptLists.java
+
+3.  Fixed the unusable evaluatedPersonIdList by deprecating it, since it was not
+	usable as currently implemented, and putting the EvaluatedPersonId value
+	directly in the evaluatedPersonList, where it can be easily referenced
+	by rules.
+
+4.  Fixed concept creation for all target relationship to source CD values, which 
+	were previously all mapping to the RoleConcept.java class.  They now map
+	to the separate concepts for entity relationships, and for clinical
+	statement relationships.
+
+5.  Fixed missing mapping of RelatedEntities that were mapped directly to Patient
+	(or OtherEvaluatedPersons).
+		BuildCDSInputFactLists.java
+
+6.  Fixed concept mapping of the value of ObservationResult.ObservationValue, 
+	Goal.GoalValue, and GoalProposal.GoalValue by creating a separate new
+	class for the value element.
+		ObservationValue.java
+		GoalValue.java
+		BuildOpenCDSConceptLists.java
+
+7.  Fixed bomb in concept mapping of the value of ObservationResult.ObservationValue, 
+	Goal.GoalValue, and GoalProposal.GoalValue by checking the value for null.
+		BuildOpenCDSConceptLists.java
+=================================
+
+	Fixed in version 1.0 release candidate 8.0 (but not publicly released)
+
+1.  Fixed a major bug that caused all OpenCDSConcept mapping to fail.  These
+	classes all extended VmrOpenCdsConcept.java without making adding any
+	new elements or methods to it, and had previously worked.  
+
+	Was fixed by adding a toString() method to the definition of each class.
+2.  Added previously missing support for evaluated person ages expressed in weeks.
+=================================
+
+	Fixed in version 1.0 release candidate 7.1
+
+1.  Fixed a two-stage bug that was causing output mapping to fail when the output
+	included doubly-nested clinical statements or clinical statements that 
+	were of a class not found in the input data.
+=================================
+
+	Fixed in version 1.0 release candidate 7.0
+
+1.  Fault in many of the ClinicalStatement mappers that was pointing to the
+	wrong mapping method for processing nested ClinicalStatements.
+=================================
+
+
+	Known issues (highest priority ones listed first):
+
+1.  Processing of a BodySite.laterality code without a BodySite.bodySiteCode fails to 
+	link to what should be matching concepts. Defect is in 
+		BuildOpenCDSConceptLists.java.  
+=================================

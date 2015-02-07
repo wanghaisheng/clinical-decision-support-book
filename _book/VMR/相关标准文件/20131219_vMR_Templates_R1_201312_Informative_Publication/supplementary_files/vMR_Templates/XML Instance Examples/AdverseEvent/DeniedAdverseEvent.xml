@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:vmr:r2 ../../../schemata/vmr/vmr.xsd"
+    xmlns:dt="urn:hl7-org:cdsdt:r2" xmlns="urn:hl7-org:vmr:r2" xsi:type="DeniedAdverseEvent">
+    <templateId root="2.16.840.1.113883.3.1829.11.3.1.3" identifierName="DeniedAdverseEvent"/>
+    <documentationTime><dt:low value="20130613080500"/><dt:high value="20130613080500"/></documentationTime>
+    <adverseEventCode codeSystem="AdverseEventToFood.xml" codeSystemName="PTS" code="PTS"><dt:displayName value="PTS"/></adverseEventCode>
+    <adverseEventAgent codeSystem="PTS" codeSystemName="PTS" code="PTS"><dt:displayName value="PTS"/></adverseEventAgent>
+    <adverseEventTime><dt:low value="20130613080500"/><dt:high value="20130613080500"/></adverseEventTime>
+</ClinicalStatement>
+

@@ -1,6 +1,6 @@
 clinical-decision-support
 =========================
-Survey of the State of the Art in CDS   
+Survey of the State of the Art in CDS
 
 The  purpose  of  this survey  is  to  provide  a  comprehensive  survey  of  currently  available
 standards, technologies and architectures in the field of  Clinical decision-support(CDS/CDSS), in order to spread  the experience and lessons learned from these efforts,

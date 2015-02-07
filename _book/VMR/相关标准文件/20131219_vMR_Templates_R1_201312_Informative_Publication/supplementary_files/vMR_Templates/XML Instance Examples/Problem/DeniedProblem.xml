@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:r2 ../../../schemata/vmr/vmr.xsd" xmlns="urn:hl7-org:vmr:r2"
+    xmlns:dt="urn:hl7-org:cdsdt:r2" xsi:type="DeniedProblem">
+    <templateId root="PTS" identifierName="DeniedProblem"/>
+    <conditionCode>
+        <dt:displayName value="PTS"/>
+    </conditionCode>
+    <conditionEffectiveTime>
+        <dt:low value="20121213"/>
+        <dt:high value="20131213"/>
+    </conditionEffectiveTime>
+</ClinicalStatement>
+
+<!-- PTS = per template specification -->
